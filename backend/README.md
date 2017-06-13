@@ -1,11 +1,11 @@
-### Backend for CookItAll
+# Backend for CookItAll
 
-# Prerequisites
+## Prerequisites
 
 install nodejs and mongodb if you don't have it..
 
 
-# Setup (before first run)
+## Setup (before first run)
 
 go to your backend project root folder via command line
 
@@ -13,13 +13,13 @@ go to your backend project root folder via command line
 cd path/to/backend
 ```
 
-#install node dependencies
+## Install node dependencies
 
 ```
 npm install
 ```
 
-#set up your database
+## Set up your database
 
 * create a new directory named "db" in backend directory
 
@@ -34,7 +34,7 @@ mongod --dbpath /path/to/db-folder
 ```
 
 
-#set up environment configuration
+## Set up environment configuration
 
 copy config.dev_local.js file to config.js file, make sure that config.js
 is in config directory.
@@ -43,7 +43,7 @@ is in config directory.
 cp config/config.dev_local.js config/config.js
 ```
 
-# running
+## Running
 
 start the web server
 
@@ -51,7 +51,7 @@ start the web server
 node server.js
 ```
 
-# manual testing
+## Manual testing
 
 We will test login module now...
 
