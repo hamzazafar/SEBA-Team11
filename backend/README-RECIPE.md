@@ -63,6 +63,8 @@ Now let's get all recipes to verify deletion
 hamza@hamza:~/seba/sebamaster-movie-backend$ curl -X GET http://localhost:3000/api/recipes/
 [{"published_date":"2017-06-14T23:39:24.847Z","title":"AWESOME Recipe","_id":"5941c92c7d332e55e3fb5804","__v":0,"ingerdients":[{"name":"beef","quantity":"1 KG","_id":"5941c92c7d332e55e3fb5806"},{"name":"sugar","quantity":"2 tbsp","_id":"5941c92c7d332e55e3fb5805"}],"directions":["step 1","step 2","step 3"]}]
 
-
-###Suggestion: Try using mongo shell for testing purposes. Ref: https://docs.mongodb.com/getting-started/shell/client/
+----------
+Suggestion
+----------
+Try using mongo shell for testing purposes. Ref: https://docs.mongodb.com/getting-started/shell/client/
 
