@@ -33,6 +33,11 @@ mkdir db
 mongod --dbpath /path/to/db-folder
 ```
 
+dont run `node server.js` in parallel, wait until you see the following line on mongod output
+
+```
+Tue Jun 13 16:03:01.962 [initandlisten] waiting for connections on port 27017
+```
 
 ## Set up environment configuration
 
