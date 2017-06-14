@@ -1,14 +1,14 @@
 -------------
 Create Recipe
 -------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/
+API Endpoint: http://ip-addr:3000/api/recipes/
 
 hamza@hamza:~/SEBA-Team11/backend$ curl -H "Content-Type: application/json" -X POST -d '{"title":"Chicken Recipe","directions":["step 1", "step 2", "step 3"],"ingerdients":[{"name":"chicken pieces", "quantity":"1 KG"},{"name":"salt", "quantity":"1 tbsp"}]}' http://localhost:3000/api/recipes/
 
 ---------------
 Get All Recipes
 ---------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/
+API Endpoint: http://ip-addr:3000/api/recipes/
 
 hamza@hamza:~/SEBA-Team11/backend$ curl -X GET http://localhost:3000/api/recipes/
 
@@ -17,7 +17,8 @@ hamza@hamza:~/SEBA-Team11/backend$ curl -X GET http://localhost:3000/api/recipes
 -----------------------------------------------------------------------------
 Get Recipe by ID --- NOTE ID IS AUTO GENERATED --- Look for your recipe's ID
 -----------------------------------------------------------------------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/<recipe-id>
+
+API Endpoint: http://ip-addr:3000/api/recipes/<recipe-id>
 
 hamza@hamza:~/SEBA-Team11/backend$ curl -X GET http://localhost:3000/api/recipes/5941c70b7d332e55e3fb57ff
 
@@ -26,7 +27,7 @@ hamza@hamza:~/SEBA-Team11/backend$ curl -X GET http://localhost:3000/api/recipes
 -----------------
 EDIT Recipe title
 -----------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/<recipe-id>
+API Endpoint: http://ip-addr:3000/api/recipes/<recipe-id>
 
 hamza@hamza:~/SEBA-Team11/backend$ curl -H "Content-Type: application/json" -X PUT -d '{"title":"Chicken Recipe IS CHANGED","directions":["step 1", "step 2", "step 3"],"ingerdients":[{"name":"chicken pieces", "quantity":"1 KG"},{"name":"salt", "quantity":"1 tbsp"}]}' http://localhost:3000/api/recipes/5941c70b7d332e55e3fb57ff
 
@@ -35,7 +36,7 @@ hamza@hamza:~/SEBA-Team11/backend$ curl -H "Content-Type: application/json" -X P
 ------------------
 Add Another Recipe
 ------------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/
+API Endpoint: http://ip-addr:3000/api/recipes/
 
  
 curl -H "Content-Type: application/json" -X POST -d '{"title":"AWESOME Recipe","directions":["step 1", "step 2", "step 3"],"ingerdients":[{"name":"beef", "quantity":"1 KG"},{"name":"sugar", "quantity":"2 tbsp"}]}' http://localhost:3000/api/recipes/
@@ -43,7 +44,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"title":"AWESOME Recipe","
 ---------------
 Get All Recipes
 ---------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/
+API Endpoint: http://ip-addr:3000/api/recipes/
 
 hamza@hamza:~/seba/sebamaster-movie-backend$ curl -X GET http://localhost:3000/api/recipes/
 
@@ -54,7 +55,7 @@ hamza@hamza:~/seba/sebamaster-movie-backend$ curl -X GET http://localhost:3000/a
 -------------------
 Delete Recipe by ID
 -------------------
-API Endpoint: http://<ip-addr>:3000/api/recipes/<recipe-id>
+API Endpoint: http://ip-addr:3000/api/recipes/<recipe-id>
 
 hamza@hamza:~/seba/sebamaster-movie-backend$  curl -X DELETE  http://localhost:3000/api/recipes/5941c70b7d332e55e3fb57ff
 
