@@ -34,8 +34,9 @@ jwtConfig(passport);
 var userRoutes = require("./user/userRoutes");
 app.use('/api/user', userRoutes(passport));
 
+var recipeRoutes = require("./recipe/recipeRoutes");
+app.use('/api/recipes', recipeRoutes(passport));
+
 //routes for other modules to be defined here ... 
 
-
 module.exports = app;
-
