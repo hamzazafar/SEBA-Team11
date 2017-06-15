@@ -9,23 +9,7 @@
                 <div ng-if="!recipeForm.$ctrl.recipe.title.$valid">
                 </div>
             </md-input-container>
-            <md-toolbar class="md-theme-light">
-              <h2 class="md-toolbar-tools">
-                <span>Directions</span>
-              </h2>
-            </md-toolbar>
-                <ul>
-                    <li style="list-style: none;" ng-repeat="d in $ctrl.recipe.directions track by $index">
-                     <h3> [Step {{$index + 1}}] {{d}} </h3>
-                    </li>
-                </ul>
-  <div layout-gt-sm="row">
-            <md-input-container md-no-float class="md-block" flex-gt-sm>
-                <input type="text" placeholder="Insert Directions" ng-model="$ctrl.temp">
-            </md-input-container>
 
-            <md-button ng-click="$ctrl.addDirection()">Add</md-button>
- </div>
             <md-toolbar class="md-theme-light">
               <h2 class="md-toolbar-tools">
                 <span>Ingredients</span>
@@ -55,9 +39,27 @@
 
             <md-button  ng-click="$ctrl.addIngredient()">Add</md-button>
     </div>
+            <md-toolbar class="md-theme-light">
+              <h2 class="md-toolbar-tools">
+                <span>Directions</span>
+              </h2>
+            </md-toolbar>
+                <ul>
+                    <li style="list-style: none;" ng-repeat="d in $ctrl.recipe.directions track by $index">
+                     <h3> [Step {{$index + 1}}] {{d}} </h3>
+                    </li>
+                </ul>
+  <div layout-gt-sm="row">
+            <md-input-container md-no-float class="md-block" flex-gt-sm>
+                <input type="text" placeholder="Insert Directions" ng-model="$ctrl.temp">
+            </md-input-container>
+
+            <md-button ng-click="$ctrl.addDirection()">Add</md-button>
+ </div>
+
             <div layout="row">
                 <span flex></span>
-                <md-button class="md-raised md-primary"type="submit" ng-click="$ctrl.save()">Save</md-button>
+                <md-button ng-disabled="!recipeForm.$valid" class="md-raised md-primary"type="submit" ng-click="$ctrl.save()">Save</md-button>
                 <md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>
             </div>
 
