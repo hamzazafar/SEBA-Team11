@@ -21,24 +21,19 @@ export default class RecipesService {
 
         let url = this.resourceUrl;
         return this.$http.get(url).then(responce => {
-
             return new Promise((resolve, reject) => {
                 resolve(responce.data);
 
             });
-
         });
-
     }
 
     get(id) {
         let url = `${ this.resourceUrl }${ id }`;
         return this.$http.get(url).then(responce => {
-
             return new Promise((resolve, reject) => {
                 resolve(responce.data);
             });
-
         })
     }
 
@@ -46,22 +41,18 @@ export default class RecipesService {
     create(recipe) {
         let url = this.resourceUrl;
         return this.$http.post(url,recipe).then(responce => {
-
             return new Promise((resolve, reject) => {
                 resolve(responce.data);
             });
-
         })
     }
 
     delete(id) {
         let url = `${ this.resourceUrl }${ id }`;
         return this.$http.delete(url).then(responce => {
-
             return new Promise((resolve, reject) => {
                 resolve(responce.status);
             });
-
         })
     }
 
@@ -69,13 +60,9 @@ export default class RecipesService {
 
         let url = `${ this.resourceUrl }${ recipe['_id'] }`;
         return this.$http.put(url,recipe).then(responce => {
-
             return new Promise((resolve, reject) => {
                 resolve(responce.data);
             });
-
         })
     }
-
-
 }
