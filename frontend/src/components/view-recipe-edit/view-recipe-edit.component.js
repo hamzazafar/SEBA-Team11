@@ -55,6 +55,20 @@ class ViewRecipeEditComponentController{
         });
     };
 
+    deleteDirection(d){
+        var index = this.model.directions.indexOf(d);
+        if (index > -1) {
+            this.model.directions.splice(index, 1);
+        }
+    }
+
+    deleteIngredient(i){
+        var index = this.model.ingredients.indexOf(i);
+        if (index > -1) {
+            this.model.ingredients.splice(index, 1);
+        }
+    }
+
     static get $inject(){
         return ['$state', RecipeService.name];
     }

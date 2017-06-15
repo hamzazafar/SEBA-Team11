@@ -8,16 +8,31 @@
                 <md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>
                 <input ng-model="$ctrl.model.title" type="text">
             </md-input-container>
-            <md-input-container class="md-icon-float md-block">
-                <label>Directions</label>
-                <md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>
-                <input ng-model="$ctrl.recipe.directions" type="text">
-            </md-input-container>
+
             <md-input-container class="md-icon-float md-block">
                 <label>Ingredients</label>
-                <md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>
-                <input ng-model="$ctrl.recipe.ingredients type="text">
+                <ul>
+                    <li style="list-style: none;" ng-repeat="i in $ctrl.model.ingredients track by $index">
+                        <h3> Name: {{i.name + ", Quantity:  " + i.quantity}} </h3>
+                        <md-button class="md-icon-button"aria-label="Delete Ingredient" ng-click="$ctrl.deleteIngredient(i)" >
+                            <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
+                        </md-button>
+                    </li>
+                </ul>
             </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+                <label>Directions</label>
+                <ul>
+                    <li style="list-style: none;" ng-repeat="d in $ctrl.model.directions track by $index">
+                        <h3> {{d}} </h3>
+                        <md-button class="md-icon-button"aria-label="Delete Directioin" ng-click="$ctrl.deleteDirection(d)" >
+                            <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
+                        </md-button>
+                    </li>
+                </ul>
+            </md-input-container>
+
             <div layout="row">
                 <span flex></span>
                 <md-button class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>
