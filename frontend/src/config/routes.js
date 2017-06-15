@@ -5,7 +5,7 @@ import RegisterComponent from './../components/view-register/view-register.compo
 
 import RecipesComponent from './../components/view-recipes/view-recipes.component';
 import RecipeComponent from './../components/view-recipe/view-recipe.component';
-//import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-edit.component';
+import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-edit.component';
 import RecipeCreateComponent from './../components/view-recipe-create/view-recipe-create.component';
 import RecipesService from './../services/recipes/recipes.service';
 
@@ -54,12 +54,11 @@ export default function config ($stateProvider, $urlRouterProvider){
                 recipe : resolveRecipe
             }
         })
-/*
         .state('recipeEdit', {
             url: '/recipes/:recipeId/edit',
             component: RecipeEditComponent.name,
             resolve: {
                 recipe : resolveRecipe
             }
-        })*/
+        })
 }

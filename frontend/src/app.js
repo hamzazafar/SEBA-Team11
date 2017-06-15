@@ -20,7 +20,7 @@ import ViewRegister from './components/view-register/view-register';
 
 import ViewRecipes from './components/view-recipes/view-recipes';
 import ViewRecipe from './components/view-recipe/view-recipe';
-//import ViewRecipeEdit from './components/view-recipe-edit/view-recipe-edit';
+import ViewRecipeEdit from './components/view-recipe-edit/view-recipe-edit';
 import ViewRecipeCreate from './components/view-recipe-create/view-recipe-create';
 
 let app = angular.module('app', [
@@ -35,7 +35,7 @@ let app = angular.module('app', [
     ViewRegister.name,
     ViewRecipes.name,
     ViewRecipe.name,
-//    ViewRecipeEdit.name,
+    ViewRecipeEdit.name,
     ViewRecipeCreate.name
 ]);
 
