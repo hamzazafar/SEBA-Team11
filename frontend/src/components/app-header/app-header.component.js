@@ -41,6 +41,9 @@ class AppHeaderComponentController{
         return user.username;
     }
 
+    recipes(){
+        this.$state.go('recipes',{});
+    }
 
     goHome(){
         this.$state.go('/',{});
