@@ -10,6 +10,7 @@ import ngMdIcons from 'angular-material-icons';
 
 import UserService from './services/user/user';
 import RecipesService from './services/recipes/recipes';
+import TagsService from './services/tags/tags';
 
 import Routes from './config/routes';
 import Middlewares from './config/middlewares';
@@ -29,7 +30,8 @@ let app = angular.module('app', [
     ngMdIcons,
     UserService.name,
     RecipesService.name,
-
+    TagsService.name,
+    
     AppContent.name,
     ViewLogin.name,
     ViewRegister.name,
