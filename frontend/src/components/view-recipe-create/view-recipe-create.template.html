@@ -1,40 +1,64 @@
 <div layout="column" layout-padding>
     <md-content class="md-no-momentum">
-        <h1>Add a new recipe</h1>
+        <h1>Add a New Recipe</h1>
         <br/>
         <form name="recipeForm">
-            <label>Title</label>
-            <md-input-container class="md-icon-float md-block">
-                <input ng-model="$ctrl.recipe.title" type="text">
+
+            <md-input-container md-no-float class="md-input-has-value md-block">
+                <input placeholder="Insert the Name of Your Recipe" ng-model="$ctrl.recipe.title" required="" type="text">
+                <div ng-if="!recipeForm.$ctrl.recipe.title.$valid">
+                </div>
             </md-input-container>
-            <label>Directions</label>
+            <md-toolbar class="md-theme-light">
+              <h2 class="md-toolbar-tools">
+                <span>Directions</span>
+              </h2>
+            </md-toolbar>
                 <ul>
-                    <li ng-repeat="d in $ctrl.recipe.directions">
-                    {{d}}
+                    <li style="list-style: none;" ng-repeat="d in $ctrl.recipe.directions track by $index">
+                     <h3> [Step {{$index + 1}}] {{d}} </h3>
+                    </li>
+                </ul>
+  <div layout-gt-sm="row">
+            <md-input-container md-no-float class="md-block" flex-gt-sm>
+                <input type="text" placeholder="Insert Directions" ng-model="$ctrl.temp">
+            </md-input-container>
+
+            <md-button ng-click="$ctrl.addDirection()">Add</md-button>
+ </div>
+            <md-toolbar class="md-theme-light">
+              <h2 class="md-toolbar-tools">
+                <span>Ingredients</span>
+              </h2>
+            </md-toolbar>
+                <ul>
+                    <li style="list-style: none;" ng-repeat="i in $ctrl.recipe.ingredients track by $index">
+                    <h3> Name: {{i.name + ", Quantity:  " + i.quantity}} </h3>
                     </li>
                 </ul>
 
-            <md-input-container class="md-block">
-                <input type="text" placeholder="Type Direction" ng-model="$ctrl.temp" ng-keypress="($event.charCode==13)? $ctrl.addDirection() : return">
-
+  <div layout-gt-sm="row">
+            <md-input-container md-no-float class="md-input-has-value md-block" flex-gt-sm>
+                <input md-maxlength="20" type="text" placeholder="Insert Ingredient Name" ng-model="$ctrl.iName">
             </md-input-container>
-            <label> Ingredients </label>
-                <ul>
-                    <li ng-repeat="i in $ctrl.recipe.ingredients">
-                    {{i.name + " " i.quantity}}
-                    </li>
-                </ul>
 
-            <md-input-container class="md-block">
-                <input type="text" placeholder="Type Ingredient Name" ng-model="$ctrl.iName">
-                <input type="text" placeholder="Type Ingredient Quantity" ng-model="$ctrl.iQuantity">
+            <div flex="5" hide-xs hide-sm>
+                  <!-- Spacer //-->
+            </div>
+            <md-input-container md-no-float class="md-input-has-value md-block" flex-gt-sm>
+                <input md-maxlength="20" type="text" placeholder="Insert Ingredient Quantity" ng-model="$ctrl.iQuantity">
             </md-input-container>
-            <md-button  class="md-button md-ink-ripple" ng-click="$ctrl.addIngredient()">Add Ingredient</md-button>
-           
+
+            <div flex="5" hide-xs hide-sm>
+                  <!-- Spacer //-->
+            </div>
+
+            <md-button  ng-click="$ctrl.addIngredient()">Add</md-button>
+    </div>
             <div layout="row">
                 <span flex></span>
-                <md-button class="md-button md-ink-ripple" type="submit" ng-click="$ctrl.save()">Save</md-button>
-                <md-button class="md-button md-ink-ripple" ng-click="$ctrl.cancel()">Cancel</md-button>
+                <md-button class="md-raised md-primary"type="submit" ng-click="$ctrl.save()">Save</md-button>
+                <md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>
             </div>
 
         </form>
