@@ -12,7 +12,7 @@ var Recipe  = new mongoose.Schema({
     title: String,
     published_date: Date,
     directions: [String],
-    ingerdients: [Ingredient]
+    ingredients: [Ingredient]
 });
 
 // Export the Mongoose model
