@@ -1,11 +1,5 @@
-<div layout="column" layout-padding="">
-    What's in your fridge?
-    <script src="angular.js"></script>
-    <script src="ng-tags-input.js"></script>
-    <link rel="stylesheet" type="text/css" href="ng-tags-input.css">
-</div>
 
-//<tags-input ng-model="tags">
-  //  <auto-complete source="loadTags($query)"></auto-complete>
-//</tags-input>
+<tags-input ng-model="$ctrl.tags">
+    <auto-complete source="loadTags($query)"></auto-complete>
+</tags-input>
 <p>Model: {{tags}}</p>

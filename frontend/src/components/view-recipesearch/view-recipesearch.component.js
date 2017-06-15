@@ -2,7 +2,7 @@
 'use strict';
 
 //import UserService from './../../services/user/user.service';
-import RecipesService from './../../services/recipes/recipes.service';
+import TagsService from './../../services/tags/tags.service';
 import template from './view-recipesearch.template.html';
 import './view-recipesearch.style.css';
 
@@ -18,15 +18,20 @@ class ViewRecipesearchComponent {
 }
 
 class ViewRecipesearchComponentController{
-    constructor($state,RecipesService){
+    constructor($state,TagsService){
         this.$state = $state;
-        this.RecipesService = RecipesService;
+        this.TagsService = TagsService;
+        this.tags = [];
     }
+
+    loadTags(query) {
+        return this.TagsService.load();
+    };
 
 
 
     static get $inject(){
-        return ['$state', UserService.name];
+        return ['$state', TagsService.name];
     }
 }
 
