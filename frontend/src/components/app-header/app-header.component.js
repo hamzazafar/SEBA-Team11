@@ -64,7 +64,7 @@ class AppHeaderComponentController{
     }
 
     newRecipe(){
-      this.$state.go('movieAdd',{})
+      this.$state.go('recipeAdd',{})
     }
 
 
