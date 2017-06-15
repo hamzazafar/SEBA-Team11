@@ -29,7 +29,7 @@ let app = angular.module('app', [
     ngMdIcons,
     UserService.name,
     RecipesService.name,
-    
+
     AppContent.name,
     ViewLogin.name,
     ViewRegister.name,
