@@ -55,7 +55,6 @@ class ViewRecipesComponentController {
 
     }
 
-
     delete(recipe) {
         if (this.UserService.isAuthenticated()) {
             let _id = recipe['_id'];
@@ -69,7 +68,6 @@ class ViewRecipesComponentController {
             this.$state.go('login',{});
         }
     };
-
 
     static get $inject(){
         return ['$state', RecipesService.name, UserService.name];
