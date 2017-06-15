@@ -1,31 +1,40 @@
 <div layout="column" layout-padding>
     <md-content class="md-no-momentum">
-        <h1> {{$ctrl.recipe.title}} </h1>
+        <h1>Add a new recipe</h1>
         <br/>
         <form name="recipeForm">
+            <label>Title</label>
             <md-input-container class="md-icon-float md-block">
-                <label>Title</label>
-                <md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>
                 <input ng-model="$ctrl.recipe.title" type="text">
             </md-input-container>
-            <md-input-container class="md-icon-float md-block">
-                <label>Author</label>
-                <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="user" md-item-text="getCurrentUser">
-  <span md-highlight-text="searchText">  {{$ctrl.getCurrentUser()}}</span>
-                </md-autocomplete>
-            </md-input-container>
+            <label>Directions</label>
+                <ul>
+                    <li ng-repeat="d in $ctrl.recipe.directions">
+                    {{d}}
+                    </li>
+                </ul>
+
             <md-input-container class="md-block">
-                <label>Directions</label>
-                <textarea ng-model="$ctrl.recipe.directions" md-maxlength="1000" rows="8" md-select-on-focus></textarea>
+                <input type="text" placeholder="Type Direction" ng-model="$ctrl.temp" ng-keypress="($event.charCode==13)? $ctrl.addDirection() : return">
+
             </md-input-container>
+            <label> Ingredients </label>
+                <ul>
+                    <li ng-repeat="i in $ctrl.recipe.ingredients">
+                    {{i.name + " " i.quantity}}
+                    </li>
+                </ul>
+
             <md-input-container class="md-block">
-                <label>Directions</label>
-                <textarea ng-model="$ctrl.recipe.ingredients" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                <input type="text" placeholder="Type Ingredient Name" ng-model="$ctrl.iName">
+                <input type="text" placeholder="Type Ingredient Quantity" ng-model="$ctrl.iQuantity">
             </md-input-container>
+            <md-button  class="md-button md-ink-ripple" ng-click="$ctrl.addIngredient()">Add Ingredient</md-button>
+           
             <div layout="row">
                 <span flex></span>
-                <md-button class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>
-                <md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>
+                <md-button class="md-button md-ink-ripple" type="submit" ng-click="$ctrl.save()">Save</md-button>
+                <md-button class="md-button md-ink-ripple" ng-click="$ctrl.cancel()">Cancel</md-button>
             </div>
 
         </form>
