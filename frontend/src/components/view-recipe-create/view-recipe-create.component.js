@@ -25,7 +25,7 @@ class ViewRecipeCreateComponentController{
         this.iName = "";
         this.iQuantity = "";
         this.recipe.ingredients = [];
-        this.recipe.directions = ["sdfds","sdfds"];
+        this.recipe.directions = [];
         this.$state = $state;
         this.RecipeService = RecipeService;
         this.UserService = UserService;
@@ -41,7 +41,7 @@ class ViewRecipeCreateComponentController{
             this.$state.go('recipe',{ recipeId:_id});
         });
     };
-   
+
     addDirection(){
       this.recipe.directions.push(this.temp);
       this.temp = "";
@@ -49,8 +49,8 @@ class ViewRecipeCreateComponentController{
 
     addIngredient(){
       var ingredient = {};
-      ingredient["name"] = this.iName;
-      ingredient["quantity"] = this.iQuantity;
+      ingredient.name = this.iName;
+      ingredient.quantity = this.iQuantity;
       this.recipe.ingredients.push(ingredient);
       this.iName = "";
       this.iQuantity = "";
