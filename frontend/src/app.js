@@ -17,6 +17,11 @@ import AppContent from './components/app-content/app-content';
 import ViewLogin from './components/view-login/view-login';
 import ViewRegister from './components/view-register/view-register';
 
+import ViewRecipes from './components/view-recipes/view-recipes';
+import ViewRecipe from './components/view-recipe/view-recipe';
+import ViewRecipeEdit from './components/view-recipe-edit/view-recipe-edit';
+import ViewRecipeCreate from './components/view-recipe-create/view-recipe-create';
+
 let app = angular.module('app', [
     uiRouter,
     angularMaterial,
@@ -24,7 +29,11 @@ let app = angular.module('app', [
     UserService.name,
     AppContent.name,
     ViewLogin.name,
-    ViewRegister.name
+    ViewRegister.name,
+    ViewRecipes.name,
+    ViewRecipe.name,
+    ViewRecipeEdit.name,
+    ViewRecipeCreate.name,
 ]);
 
 app.constant('API_URL', 'http://localhost:3000/api');
