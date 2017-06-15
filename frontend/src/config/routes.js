@@ -3,7 +3,7 @@
 import LoginComponent from './../components/view-login/view-login.component';
 import RegisterComponent from './../components/view-register/view-register.component';
 
-import RecipesComponent from './../components/view-recipes/view-recipes.component';
+//import RecipesComponent from './../components/view-recipes/view-recipes.component';
 import RecipesComponent from './../components/view-recipes/view-recipes.component';
 import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-edit.component';
 import RecipeCreateComponent from './../components/view-recipe-create/view-recipe-create.component';
@@ -62,4 +62,3 @@ export default function config ($stateProvider, $urlRouterProvider){
             }
         })
 }
-

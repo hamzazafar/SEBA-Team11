@@ -59,6 +59,15 @@ class AppHeaderComponentController{
         this.$state.go('register',{});
     }
 
+    about(){
+        this.$state.go('recipes',{});
+    }
+
+    newRecipe(){
+      this.$state.go('movieAdd',{})
+    }
+
+
     static get $inject(){
         return ['$state', UserService.name];
     }
