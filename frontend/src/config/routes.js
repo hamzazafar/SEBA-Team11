@@ -2,7 +2,7 @@
 
 import LoginComponent from './../components/view-login/view-login.component';
 import RegisterComponent from './../components/view-register/view-register.component';
-
+import AboutComponent from './../components/view-about/view-about.component';
 import RecipesComponent from './../components/view-recipes/view-recipes.component';
 import RecipeComponent from './../components/view-recipe/view-recipe.component';
 import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-edit.component';
@@ -35,6 +35,10 @@ export default function config ($stateProvider, $urlRouterProvider){
         .state('register', {
             url: '/register',
             component: RegisterComponent.name,
+        })
+        .state('about', {
+            url: '/about',
+            component: AboutComponent.name,
         })
         .state('recipes', {
             url: '/recipes',

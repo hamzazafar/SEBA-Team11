@@ -63,7 +63,7 @@ class AppHeaderComponentController{
     }
 
     about(){
-        this.$state.go('recipes',{});
+        this.$state.go('about',{});
     }
 
     newRecipe(){
