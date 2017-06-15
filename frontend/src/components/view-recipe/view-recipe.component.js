@@ -31,6 +31,7 @@ class ViewRecipeComponentController{
 
     }
 
+
     edit () {
 
         if (this.UserService.isAuthenticated()) {
