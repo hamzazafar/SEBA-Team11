@@ -8,6 +8,10 @@
 <body>
 
 <app-content></app-content>
+<tags-input ng-model="tags">
+    <auto-complete source="loadTags($query)"></auto-complete>
+</tags-input>
+<p>Model: {{tags}}</p>
 
 </body>
 </html>
