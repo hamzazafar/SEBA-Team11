@@ -16,6 +16,7 @@ import Middlewares from './config/middlewares';
 
 import AppContent from './components/app-content/app-content';
 import ViewLogin from './components/view-login/view-login';
+import ViewAbout from './components/view-about/view-about';
 import ViewRegister from './components/view-register/view-register';
 
 import ViewRecipes from './components/view-recipes/view-recipes';
@@ -32,6 +33,7 @@ let app = angular.module('app', [
 
     AppContent.name,
     ViewLogin.name,
+    ViewAbout.name,
     ViewRegister.name,
     ViewRecipes.name,
     ViewRecipe.name,

@@ -36,10 +36,6 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/register',
             component: RegisterComponent.name,
         })
-        .state('about', {
-            url: '/about',
-            component: AboutComponent.name,
-        })
         .state('recipes', {
             url: '/recipes',
             component: RecipesComponent.name,
@@ -64,5 +60,9 @@ export default function config ($stateProvider, $urlRouterProvider){
             resolve: {
                 recipe : resolveRecipe
             }
+        })
+        .state('about', {
+            url: '/about',
+            component: AboutComponent.name,
         })
 }
