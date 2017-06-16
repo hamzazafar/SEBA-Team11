@@ -25,13 +25,13 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown open">
+        <li class="dropdown">
          <a ng-if="$ctrl.isAuthenticated()" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
            <md-icon md-menu-origin><ng-md-icon style="fill: white" icon="account_circle" ></ng-md-icon></md-icon>
            {{$ctrl.getCurrentUser()}}
            <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu" role="menu">
+          <ul ng-if="$ctrl.isAuthenticated()" class="dropdown-menu" role="menu">
                  <li><button class="btn menu-btn" md-menu-align-target aria-label="New Recipe" ng-click="$ctrl.newRecipe()">Add New Recipe</button></li>
          </ul>
         </li>
