@@ -17,14 +17,14 @@
     </md-card-title>
 
     <md-card-content>
-        <b><p>Preparation steps:</p></b>
-        <div ng-repeat="step in $ctrl.recipe.directions">
-            <p>#{{$index + 1}}: {{step}}</p>
-        </div>
-    <br/>
         <b><p>Ingredients:</p></b>
         <div ng-repeat="ingredient in $ctrl.recipe.ingredients">
             <p>{{ingredient["quantity"]}} {{ingredient["name"]}} </p>
+        </div>
+    <br/>
+        <b><p>Preparation steps:</p></b>
+        <div ng-repeat="step in $ctrl.recipe.directions">
+            <p>Step {{$index + 1}}: {{step}}</p>
         </div>
     </md-card-content>
 </md-card>
