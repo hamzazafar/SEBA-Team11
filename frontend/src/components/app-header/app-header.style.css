@@ -1,22 +1,25 @@
-.md-button.md-default-theme.md-accent:not([disabled]) md-icon, .md-button.md-accent:not([disabled]) md-icon {
-    color: inherit;
+
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
 }
 
-md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar .md-button._md-nav-button.md-unselected {
-    color: inherit;
+.btn:active, .btn:focus {
+  color:#18BCA1;
+  background: none;
+  border-color: #2c3e50;
 }
 
-.md-button.md-default-theme.md-accent, .md-button.md-accent {
-    color: #ffffff;
-    font-weight: bold;
+.menu-btn {
+  color:#18BCA1;
+  background: none;
+  outline:none;
 }
 
-app-header > md-toolbar, app-header > md-toolbar > .md-toolbar-tools{
-    min-height: 50px;
-    height: 50px;
-}
-
-md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
-    color: #ffffff;
-    background: #ffffff;
+.menu-btn:focus,.menu-btn:active:focus,.menu-btn.active:focus,
+.menu-btn.focus,.menu-btn:active.focus,.menu-btn.active.focus, .menu-btn:hover {
+  color:#18BCA1;
+  background: none;
+  outline:none;
+  border-color: white;
 }

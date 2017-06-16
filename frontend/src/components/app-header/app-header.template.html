@@ -1,57 +1,59 @@
-<md-toolbar md-colors="{background: 'grey-A100'}">
-    <div class="md-toolbar-tools">
-      <md-button aria-label="Home">
-                CookItAll
-      </md-button>
-
-      <span flex="5"></span>
-
-      <md-button aria-label="About" ng-click="$ctrl.about()" >
-                About
-      </md-button>
-
-      <md-button aria-label="Recipes" ng-click="$ctrl.recipes()" >
-                Recipes
-      </md-button>
-
-      <md-button aria-label="Home" ng-disabled="true">
-        <md-icon md-menu-align-target><ng-md-icon style="fill: grey" icon="lock" ></ng-md-icon></md-icon>
-        <font color="grey">Cooking Groups</font>
-      </md-button>
-
-
-        <span flex></span>
-
-
-<md-menu ng-if="$ctrl.isAuthenticated()">
-        <md-button ng-click="$ctrl.openMenu($mdMenu, $event)">
-          <md-icon md-menu-origin><ng-md-icon style="fill: black" icon="account_circle" ></ng-md-icon></md-icon>
-          {{$ctrl.getCurrentUser()}}
-        </md-button>
-        <md-menu-content>
-          <md-menu-item>
-            <md-button md-menu-align-target aria-label="New Recipe" ng-click="$ctrl.newRecipe()">Add New Recipe</md-button>
-          </md-menu-item>
-        </md-menu-content>
-</md-menu>
-
-        <md-button ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.logout($event)">
-          <md-icon md-menu-align-target><ng-md-icon style="fill: black" icon="logout" ></ng-md-icon></md-icon>
-          Logout
-        </md-button>
-
-        <md-button ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login($event)">
-          <md-icon md-menu-align-target><ng-md-icon style="fill: black" icon="logout" ></ng-md-icon></md-icon>
-          Login
-        </md-button>
-
-        <md-button ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.register($event)">
-          <md-icon md-menu-align-target><ng-md-icon style="fill: black" icon="logout" ></ng-md-icon></md-icon>
-          Sign Up
-        </md-button>
-
-
-
-
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      </button>
+      <a class="navbar-brand">CookItAll</a>
     </div>
-</md-toolbar>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <button class="btn btn-primary navbar-btn" ng-click="$ctrl.about()" outline: none >
+                  About
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-primary navbar-btn" ng-click="$ctrl.recipes()" >
+                  Recipes
+          </button></li>
+        <li>
+          <button aria-label="Cooking Groups" class="btn btn-link navbar-btn" ng-disabled="true">
+            <md-icon md-menu-align-target><ng-md-icon style="fill: grey" icon="lock" ></ng-md-icon></md-icon>
+            <font>Cooking Groups</font>
+          </button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown open">
+         <a ng-if="$ctrl.isAuthenticated()" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
+           <md-icon md-menu-origin><ng-md-icon style="fill: white" icon="account_circle" ></ng-md-icon></md-icon>
+           {{$ctrl.getCurrentUser()}}
+           <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+                 <li><button class="btn menu-btn" md-menu-align-target aria-label="New Recipe" ng-click="$ctrl.newRecipe()">Add New Recipe</button></li>
+         </ul>
+        </li>
+        <li>
+          <button class="btn btn-link navbar-btn " ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.logout($event)">
+
+            Logout
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-link navbar-btn" ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login($event)">
+
+            Login
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-link navbar-btn" ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.register($event)">
+
+            Sign Up
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
