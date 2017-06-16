@@ -8,6 +8,7 @@ import RecipeComponent from './../components/view-recipe/view-recipe.component';
 import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-edit.component';
 import RecipeCreateComponent from './../components/view-recipe-create/view-recipe-create.component';
 import RecipesService from './../services/recipes/recipes.service';
+import RecipeSearchComponent from './../components/view-recipe-search/view-recipe-search.component';
 
 
 resolveRecipe.$inject = ['$stateParams', RecipesService.name];
@@ -64,5 +65,9 @@ export default function config ($stateProvider, $urlRouterProvider){
         .state('about', {
             url: '/about',
             component: AboutComponent.name,
+        })
+        .state('recipeSearch', {
+            url: '/recipeSearch',
+            component: RecipeSearchComponent.name,
         })
 }
