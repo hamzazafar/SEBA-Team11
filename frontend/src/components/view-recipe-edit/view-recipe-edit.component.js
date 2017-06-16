@@ -3,6 +3,7 @@
 
 import template from './view-recipe-edit.template.html';
 
+
 import RecipeService from './../../services/recipes/recipes.service';
 
 class ViewRecipeEditComponent {
@@ -24,6 +25,12 @@ class ViewRecipeEditComponentController{
         this.model = {};
         this.$state = $state;
         this.RecipesService = RecipesService;
+        this.recipe = {};
+        this.temp = "";
+        this.iName = "";
+        this.iQuantity = "";
+        this.recipe.ingredients = [];
+        this.recipe.directions = [];
     }
 
     $onInit() {
@@ -54,6 +61,20 @@ class ViewRecipeEditComponentController{
             this.$state.go('recipes',{});
         });
     };
+
+    addDirection(){
+        this.model.directions.push(this.temp);
+        this.temp = "";
+    }
+
+    addIngredient(){
+        var ingredient = {};
+        ingredient.name = this.iName;
+        ingredient.quantity = this.iQuantity;
+        this.model.ingredients.push(ingredient);
+        this.iName = "";
+        this.iQuantity = "";
+    }
 
     deleteDirection(d){
         var index = this.model.directions.indexOf(d);

@@ -13,11 +13,33 @@
                 <label>Ingredients</label>
                 <ul>
                     <li style="list-style: none;" ng-repeat="i in $ctrl.model.ingredients track by $index">
-                        <h3> Name: {{i.name + ", Quantity:  " + i.quantity}} </h3>
-                        <md-button class="md-icon-button"aria-label="Delete Ingredient" ng-click="$ctrl.deleteIngredient(i)" >
-                            <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
-                        </md-button>
+                        <div layout="row">
+                            <h5> Name: {{i.name + ", Quantity:  " + i.quantity}} </h5>
+                            <md-button class="md-icon-button"aria-label="Delete Ingredient" ng-click="$ctrl.deleteIngredient(i)" >
+                                <md-icon><ng-md-icon icon="delete"></ng-md-icon></md-icon>
+                            </md-button>
+                        </div>
                     </li>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container md-no-float class="md-input-has-value md-block" flex-gt-sm>
+                            <input md-maxlength="20" type="text" placeholder="Insert Ingredient Name" ng-model="$ctrl.iName">
+                        </md-input-container>
+
+                        <div flex="5" hide-xs hide-sm>
+                            <!-- Spacer //-->
+                        </div>
+                        <md-input-container md-no-float class="md-input-has-value md-block" flex-gt-sm>
+                            <input md-maxlength="20" type="text" placeholder="Insert Ingredient Quantity" ng-model="$ctrl.iQuantity">
+                        </md-input-container>
+
+                        <div flex="2" hide-xs hide-sm>
+                            <!-- Spacer //-->
+                        </div>
+
+                        <md-button class="md-icon-button" ng-click="$ctrl.addIngredient()" >
+                            <md-icon><ng-md-icon icon="add_circle"></ng-md-icon></md-icon>
+                    </div>
                 </ul>
             </md-input-container>
 
@@ -25,17 +47,31 @@
                 <label>Directions</label>
                 <ul>
                     <li style="list-style: none;" ng-repeat="d in $ctrl.model.directions track by $index">
-                        <h3> {{d}} </h3>
-                        <md-button class="md-icon-button"aria-label="Delete Directioin" ng-click="$ctrl.deleteDirection(d)" >
-                            <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
-                        </md-button>
+                        <div layout="row">
+                            <h5> Step {{$index + 1}} {{d}} </h5>
+                            <md-button class="md-icon-button"aria-label="Delete Directioin" ng-click="$ctrl.deleteDirection(d)" >
+                                    <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
+                            </md-button>
+                        </div>
                     </li>
+                    <div layout-gt-sm="row">
+                        <md-input-container md-no-float class="md-block" flex-gt-sm>
+                            <input type="text" placeholder="Insert Directions" ng-model="$ctrl.temp">
+                        </md-input-container>
+
+                        <div flex="2" hide-xs hide-sm>
+                            <!-- Spacer //-->
+                        </div>
+
+                        <md-button class="md-icon-button" ng-click="$ctrl.addIngredient()" >
+                            <md-icon><ng-md-icon icon="add_circle"></ng-md-icon></md-icon>
+                    </div>
                 </ul>
             </md-input-container>
 
             <div layout="row">
                 <span flex></span>
-                <md-button class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>
+                <md-button ng-disabled="!recipeForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>
                 <md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>
             </div>
 
