@@ -3,14 +3,14 @@
         <h1> {{$ctrl.recipe.title}} </h1>
         <br/>
         <form name="recipeForm">
+            <label>Title</label>
             <md-input-container class="md-icon-float md-block">
-                <label>Title</label>
-                <md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>
+                <!--<md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>-->
                 <input ng-model="$ctrl.model.title" type="text">
             </md-input-container>
-
+            <label>Ingredients</label>
             <md-input-container class="md-icon-float md-block">
-                <label>Ingredients</label>
+
                 <ul>
                     <li style="list-style: none;" ng-repeat="i in $ctrl.model.ingredients track by $index">
                         <div layout="row">
@@ -42,9 +42,9 @@
                     </div>
                 </ul>
             </md-input-container>
-
+            <label>Directions</label>
             <md-input-container class="md-icon-float md-block">
-                <label>Directions</label>
+
                 <ul>
                     <li style="list-style: none;" ng-repeat="d in $ctrl.model.directions track by $index">
                         <div layout="row">

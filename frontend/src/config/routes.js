@@ -67,7 +67,7 @@ export default function config ($stateProvider, $urlRouterProvider){
             component: AboutComponent.name,
         })
         .state('recipeSearch', {
-            url: '/recipeSearch',
+            url: '/',
             component: RecipeSearchComponent.name,
         })
 }
