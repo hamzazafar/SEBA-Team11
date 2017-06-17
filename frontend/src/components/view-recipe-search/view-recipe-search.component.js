@@ -28,6 +28,10 @@ class ViewRecipeSearchComponentController{
         return ['$state', RecipeService.name];
     }
 
+    loadImage(image) {
+    return require('file-loader!../../assets/' + image);
+  }
+
 }
 
 
