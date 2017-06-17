@@ -1,4 +1,8 @@
-md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
-    background-color: rgb(189,189,189);
-    color: rgba(255,255,255,0.87);
+
+
+.btn-small:focus,.btn-small:active:focus,.btn-small.active:focus,
+.btn-small.focus,.btn-small:active.focus,.btn-small.active.focus, .btn-small:hover {
+  background: none;
+  outline:none;
+
 }
