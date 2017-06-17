@@ -5,6 +5,7 @@ import template from './view-recipe-search.template.html';
 
 
 import RecipeService from './../../services/recipes/recipes.service';
+import './view-recipe-search.style.css';
 
 class ViewRecipeSearchComponent {
     constructor(){
