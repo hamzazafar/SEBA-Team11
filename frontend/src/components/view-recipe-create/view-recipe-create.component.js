@@ -5,7 +5,6 @@ import template from './view-recipe-create.template.html';
 import RecipeService from './../../services/recipes/recipes.service';
 import UserService from './../../services/user/user.service';
 
-import './view-recipe-create.style.css';
 
 class ViewRecipeCreateComponent {
     constructor(){

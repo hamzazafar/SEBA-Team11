@@ -1,81 +1,93 @@
-<div layout="column" layout-padding>
-    <md-content class="md-no-momentum">
-        <h1> {{$ctrl.recipe.title}} </h1>
-        <br/>
-        <form name="recipeForm">
-            <label>Title</label>
-            <md-input-container class="md-icon-float md-block">
-                <!--<md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>-->
-                <input ng-model="$ctrl.model.title" type="text">
-            </md-input-container>
-            <label>Ingredients</label>
-            <md-input-container class="md-icon-float md-block">
+<form class="form-horizontal" name="recipeForm">
+  <fieldset>
+    <legend>Make Changes to the Recipe</legend>
 
-                <ul>
-                    <li style="list-style: none;" ng-repeat="i in $ctrl.model.ingredients track by $index">
-                        <div layout="row">
-                            <h5> Name: {{i.name + ", Quantity:  " + i.quantity}} </h5>
-                            <md-button class="md-icon-button"aria-label="Delete Ingredient" ng-click="$ctrl.deleteIngredient(i)" >
-                                <md-icon><ng-md-icon icon="delete"></ng-md-icon></md-icon>
-                            </md-button>
-                        </div>
-                    </li>
+<!-- Name -->
 
-                    <div layout-gt-sm="row">
-                        <md-input-container md-no-float class="md-input-has-value md-block" flex-gt-sm>
-                            <input md-maxlength="20" type="text" placeholder="Insert Ingredient Name" ng-model="$ctrl.iName">
-                        </md-input-container>
+    <div class="form-group">
+      <label for="inputName" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="$ctrl.model.title" required="">
+      </div>
+    </div>
+    </div>
 
-                        <div flex="5" hide-xs hide-sm>
-                            <!-- Spacer //-->
-                        </div>
-                        <md-input-container md-no-float class="md-input-has-value md-block" flex-gt-sm>
-                            <input md-maxlength="20" type="text" placeholder="Insert Ingredient Quantity" ng-model="$ctrl.iQuantity">
-                        </md-input-container>
+<!-- Ingredients -->
 
-                        <div flex="2" hide-xs hide-sm>
-                            <!-- Spacer //-->
-                        </div>
-
-                        <md-button class="md-icon-button" ng-click="$ctrl.addIngredient()" >
-                            <md-icon><ng-md-icon icon="add_circle"></ng-md-icon></md-icon>
-                    </div>
-                </ul>
-            </md-input-container>
-            <label>Directions</label>
-            <md-input-container class="md-icon-float md-block">
-
-                <ul>
-                    <li style="list-style: none;" ng-repeat="d in $ctrl.model.directions track by $index">
-                        <div layout="row">
-                            <h5> Step {{$index + 1}} {{d}} </h5>
-                            <md-button class="md-icon-button"aria-label="Delete Directioin" ng-click="$ctrl.deleteDirection(d)" >
-                                    <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
-                            </md-button>
-                        </div>
-                    </li>
-                    <div layout-gt-sm="row">
-                        <md-input-container md-no-float class="md-block" flex-gt-sm>
-                            <input type="text" placeholder="Insert Directions" ng-model="$ctrl.temp">
-                        </md-input-container>
-
-                        <div flex="2" hide-xs hide-sm>
-                            <!-- Spacer //-->
-                        </div>
-
-                        <md-button class="md-icon-button" ng-click="$ctrl.addDirection()" >
-                            <md-icon><ng-md-icon icon="add_circle"></ng-md-icon></md-icon>
-                    </div>
-                </ul>
-            </md-input-container>
-
-            <div layout="row">
-                <span flex></span>
-                <md-button ng-disabled="!recipeForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>
-                <md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>
+<div class="form-group">
+          <div ng-if="$ctrl.model.ingredients.length > 0" class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Ingredients</h3>
             </div>
+            <div class="panel-body">
+              <ul>
+                <li style="list-style: none;" ng-repeat="i in $ctrl.model.ingredients track by $index">
+                  <div layout="row">
+                   <h5> [{{$index + 1}}] {{i.name + "&emsp;" + i.quantity}} </h5>
+                   <md-button class="md-icon-button"aria-label="Delete Ingredient" ng-click="$ctrl.deleteIngredient(i)" >
+                       <md-icon><ng-md-icon icon="delete"></ng-md-icon></md-icon>
+                   </md-button>
+                 </div>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        </form>
-    </md-content>
+      <label class="col-lg-2 control-label">Ingredient</label>
+<div layout-gt-sm="row">
+        <div class="col-lg-6">
+          <input type="text" class="form-control" placeholder="Ingredient" ng-model="$ctrl.iName" maxlength="20">
+        </div>
+
+        <div class="col-lg-6">
+          <input type="text" class="form-control" placeholder="Quantity" ng-model="$ctrl.iQuantity" maxlength="20">
+        </div>
+      <button class="btn btn-info btn-sm" ng-click="$ctrl.addIngredient()">Add</button>
+    </div>
+</div>
+
+<!-- Directions -->
+
+<div class="form-group">
+      <div ng-if="$ctrl.model.directions.length > 0" class="panel panel-info">
+          <div class="panel-heading">
+              <h3 class="panel-title">Cooking Directions</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li style="list-style: none;" ng-repeat="d in $ctrl.model.directions track by $index">
+                <div layout="row">
+                  <h5> [Step {{$index + 1}}] {{d}} </h5>
+                  <md-button class="md-icon-button"aria-label="Delete Direction" ng-click="$ctrl.deleteDirection(d)" >
+                          <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
+                  </md-button>
+                </div>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+        <label for="directions" class="col-lg-2 control-label">Directions</label>
+        <div layout-gt-sm="row">
+        <div class="col-lg-12">
+          <input class="form-control" id="directions" ng-model="$ctrl.temp" placeholder="Step 1..."></input>
+        </div>
+
+
+
+        <button class="btn btn-info btn-sm" type="button" ng-click="$ctrl.addDirection()">Add</button>
+      </div>
 
 </div>
+
+
+<!-- Cancel and Submit Buttons -->
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
+        <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
