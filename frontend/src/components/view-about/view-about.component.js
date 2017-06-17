@@ -21,6 +21,7 @@ class ViewAboutComponent {
 }
 
 class ViewAboutComponentController{
+
     constructor($state,UserService){
         this.$state = $state;
         this.UserService = UserService;
@@ -29,6 +30,10 @@ class ViewAboutComponentController{
     static get $inject(){
         return ['$state', UserService.name];
     }
+
+    loadImage(image) {
+    return require('file-loader!../../assets/' + image);
+};
 
 }
 
