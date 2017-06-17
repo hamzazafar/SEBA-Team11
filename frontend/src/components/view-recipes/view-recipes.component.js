@@ -8,6 +8,7 @@ import template from './view-recipes.template.html';
 import RecipesService from './../../services/recipes/recipes.service';
 import UserService from './../../services/user/user.service';
 
+import './view-recipes.style.css';
 
 class ViewRecipesComponent {
     constructor(){
