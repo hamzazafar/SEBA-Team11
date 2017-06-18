@@ -11,6 +11,7 @@ class ViewRecipeSearchComponent {
     constructor(){
         this.controller = ViewRecipeSearchComponentController;
         this.template = template;
+        this.tags = [];
     }
 
     static get name() {
