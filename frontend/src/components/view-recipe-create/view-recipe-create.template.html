@@ -85,8 +85,8 @@
 
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
+          <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Submit</button>
         <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
-        <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </fieldset>

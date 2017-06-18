@@ -19,7 +19,10 @@
     <md-card-content>
         <b><p>Ingredients:</p></b>
         <div ng-repeat="ingredient in $ctrl.recipe.ingredients">
-            <p>{{ingredient["quantity"]}} {{ingredient["name"]}} </p>
+            <div layout="row">
+                <div flex><p>[{{$index + 1}}]  {{ingredient["name"]}} </p></div>
+                <div flex><p>Quantity: {{ingredient["quantity"]}} </p></div>
+            </div>
         </div>
     <br/>
         <b><p>Preparation steps:</p></b>

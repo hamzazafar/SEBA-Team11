@@ -23,7 +23,7 @@
               <ul>
                 <li style="list-style: none;" ng-repeat="i in $ctrl.model.ingredients track by $index">
                   <div layout="row">
-                   <h5> [{{$index + 1}}] {{i.name + "&emsp;" + i.quantity}} </h5>
+                      <h5> [{{$index + 1}}] {{i.name + "&emsp;" + i.quantity}} </h5>
                    <md-button class="md-icon-button"aria-label="Delete Ingredient" ng-click="$ctrl.deleteIngredient(i)" >
                        <md-icon><ng-md-icon icon="delete"></ng-md-icon></md-icon>
                    </md-button>
@@ -85,8 +85,8 @@
 
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
         <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Save</button>
+        <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
       </div>
     </div>
   </fieldset>
