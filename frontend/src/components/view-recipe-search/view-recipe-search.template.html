@@ -7,7 +7,8 @@
                 <div class="intro-message featurette-heading">
                     <h1 class="text-center" >What's in Your Fridge?</h1>
                     <div class="text-center">
-                        <tags-input ng-model="tags" placeholder="Type here..">
+                        <tags-input ng-model="$ctrl.tags" placeholder="Type here.." add-on-paste="true">
+                            <auto-complete source="$ctrl.loadTags()"></auto-complete>
                         </tags-input>
                     </div>
                 </div>
