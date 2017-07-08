@@ -2,6 +2,7 @@
     <md-card-title>
         <md-card-title-text>
             <span class="md-headline">{{$ctrl.recipe.title}}</span>
+
             <md-card-actions layout="row" layout-align="end center">
                 <md-button class="md-icon-button" aria-label="Edit Item" ng-click="$ctrl.edit()" >
                     <md-icon><ng-md-icon icon="mode_edit"></ng-md-icon></md-icon>
@@ -17,6 +18,8 @@
     </md-card-title>
 
     <md-card-content>
+        <b><p>Description: </p></b>
+        {{$ctrl.recipe.description}}
         <b><p>Ingredients:</p></b>
         <div ng-repeat="ingredient in $ctrl.recipe.ingredients">
             <div layout="row">

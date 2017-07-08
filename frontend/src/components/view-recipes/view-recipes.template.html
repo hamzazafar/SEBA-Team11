@@ -6,17 +6,27 @@
         <div class="md-list-item-text">
             <h3>{{recipe.title}}</h3>
             <p>Created on: {{recipe.published_date | date:'dd/MM/yyyy'}}</p>
+            <p>{{recipe.description}}</p>
+        </div>
+        <div layout="column">
+            <div flex> <div layout="row">
+       <div flex><md-button class="md-icon-button" aria-label="Edit Item" ng-click="$ctrl.edit(recipe)" >
+            <md-icon><ng-md-icon icon="mode_edit"></ng-md-icon></md-icon>
+        </md-button> </div>
+
+            <div flex><md-button class="md-icon-button"aria-label="Delete Item" ng-click="$ctrl.delete(recipe)" >
+            <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
+        </md-button> </div>
+         </div>
+            </div>
+            <div flex>
+            <md-button class="md-icon-button" aria-label="Share">
+                <md-icon><ng-md-icon icon="screen_share"></ng-md-icon></md-icon>
+            </md-button>
+            </div>
+       <md-divider ng-if="!$last"></md-divider>
         </div>
 
-
-        <md-button class="md-icon-button" aria-label="Edit Item" ng-click="$ctrl.edit(recipe)" >
-            <md-icon><ng-md-icon icon="mode_edit"></ng-md-icon></md-icon>
-        </md-button>
-
-        <md-button class="md-icon-button"aria-label="Delete Item" ng-click="$ctrl.delete(recipe)" >
-            <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
-        </md-button>
-        <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
     <md-divider></md-divider>
 
