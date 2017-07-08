@@ -10,6 +10,7 @@ var Ingredient = new mongoose.Schema({
 // Defining our recipe schema
 var Recipe  = new mongoose.Schema({
     title: String,
+    author: String,
     description: String,
     published_date: Date,
     directions: [String],
