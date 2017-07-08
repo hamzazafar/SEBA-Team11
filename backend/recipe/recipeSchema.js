@@ -7,6 +7,14 @@ var Ingredient = new mongoose.Schema({
     quantity: String
 });
 
+var Review = new mongoose.Schema({
+    author: String,
+    published_date: Date,
+    stars: Number,
+    comment: String,
+});
+
+
 // Defining our recipe schema
 var Recipe  = new mongoose.Schema({
     title: String,
@@ -15,7 +23,8 @@ var Recipe  = new mongoose.Schema({
     published_date: Date,
     directions: [String],
     ingredients: [Ingredient],
-
+    rating: Number,
+    reviews: [Review]
 });
 
 // Export the Mongoose model
