@@ -32,6 +32,7 @@ class ViewRecipeComponentController{
         this.UserService = UserService;
         this.review_comment = "";
         this.recipe.reviews = [];
+        this.stars = 0;
 
 
     }
@@ -79,9 +80,10 @@ class ViewRecipeComponentController{
       review.author = this.UserService.getCurrentUser().username;
       review.comment = this.review_comment;
       review.published_date = new Date();
-      review.rating = 5;
+      review.stars = this.stars;
       this.model.reviews.push(review);
       this.review_comment = "";
+
 
       $('#myModal').modal('hide');
 
@@ -89,6 +91,37 @@ class ViewRecipeComponentController{
 
     };
 
+    deleteReview(i){
+        var index = this.model.reviews.indexOf(i);
+        if (index > -1) {
+            this.model.reviews.splice(index, 1);
+        }
+        this.save();
+    }
+
+    getRating() {
+      var countReviews = this.model.reviews.length;
+      console.log(countReviews)
+
+      var sumReviews = 0;
+      var i = 0;
+      for ( i = 0; i < this.model.reviews.length; i++) {
+        sumReviews += +this.model.reviews[i].stars;
+        console.log(this.model.reviews[i].stars)
+      }
+      console.log(sumReviews)
+      if (countReviews == 0) {
+        return 5;
+      } else {
+
+       return Math.round(sumReviews/countReviews);
+     }
+
+    }
+
+    loadImage(image) {
+    return require('file-loader!../../assets/' + image);
+};
 
     static get $inject(){
         return ['$state', RecipesService.name, UserService.name];

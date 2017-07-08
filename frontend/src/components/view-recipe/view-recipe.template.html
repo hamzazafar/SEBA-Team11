@@ -34,6 +34,18 @@
     </md-card-content>
 </md-card>
 
+<blockquote>
+  <p>Ratings</p>
+  Testing
+  <p>{{$ctrl.getRating()}}</p>
+  <img ng-if = "$ctrl.getRating() == 1" ng-src="{{$ctrl.loadImage('1.png')}}">
+  <img ng-if = "$ctrl.getRating() == 2" ng-src="{{$ctrl.loadImage('2.png')}}">
+  <img ng-if = "$ctrl.getRating() == 3" ng-src="{{$ctrl.loadImage('3.png')}}">
+  <img ng-if = "$ctrl.getRating() == 4" ng-src="{{$ctrl.loadImage('4.png')}}">
+  <img ng-if = "$ctrl.getRating() == 5" ng-src="{{$ctrl.loadImage('5.png')}}">
+
+</blockquote>
+
 <ul>
   <li style="list-style: none;" ng-repeat="review in $ctrl.model.reviews">
     <div class="row">
@@ -47,7 +59,10 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <strong>{{review.author}} </strong> <span class="text-muted"> commented {{review.published_date | date:'dd/MM/yyyy'}}</span>
-          </div>
+            <md-button ng-if="$ctrl.UserService.getCurrentUser().username == review.author" class="md-icon-button pull-right" aria-label="Delete Item" ng-click="$ctrl.deleteReview(review)" >
+                 <md-icon><ng-md-icon icon="delete"></ng-md-icon></md-icon>
+             </md-button>
+            </div>
           <div class="panel-body">
             {{review.comment}}
           </div><!-- /panel-body -->
@@ -59,7 +74,7 @@
 
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Post Review</button>
+  <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Add Review</button>
 
   <div id="myModal" class="modal">
   <div class="modal-dialog">
@@ -71,9 +86,10 @@
 
       <div class="modal-body">
 
-        <input class = "col-md-12 form-control" type="text" id="inputName" placeholder="Review.." ng-model="$ctrl.review_comment" required="">
+        <textarea class="form-control" rows="3" id="inputName" placeholder="Review.." ng-model="$ctrl.review_comment" required=""></textarea>
+
         <label for="rating">Please rate the recipe:</label>
-          <select class="form-control" id="rating">
+          <select class="form-control" id="rating" ng-model="$ctrl.stars">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -86,7 +102,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="$ctrl.addReview()" >Post Review</button>
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.addReview()" >Add Review</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
       </div>
     </div>
