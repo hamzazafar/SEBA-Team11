@@ -1,10 +1,10 @@
 /**
  * Created by andre on 7/8/2017.
  */
-// importing recipe model
+// importing review model
 var Review = require('./reviewSchema');
 
-// POST Endpoint /api/recipes
+// POST Endpoint /api/reviews
 exports.postReview = function(req, res) {
     console.log('SERVER: POST review request')
 
@@ -20,22 +20,22 @@ exports.postReview = function(req, res) {
     });
 };
 
-// GET Endpoint /api/review
-exports.getReview = function(req, res) {
+// GET Endpoint /api/reviews
+exports.getReviews = function(req, res) {
     console.log('SERVER: GET review request')
 
-    Review.find(function(err, recipes) {
+    Review.find(function(err, reviews) {
         if (err) {
             res.status(500).send(err);
             return;
         }
-        res.json(review);
+        res.json(reviews);
     });
 };
 
 // GET Endpoint /api/reviews/:review_id
 exports.getReview = function(req, res) {
-    console.log('SERVER: GET recipe request')
+    console.log('SERVER: GET review request')
 
     Review.findById(req.params.review_id, function(err, review) {
         if (err) {
@@ -47,11 +47,11 @@ exports.getReview = function(req, res) {
     });
 };
 
-// PUT Endpoint /api/recipes/:recipe_id
+// PUT Endpoint /api/reviews/:review_id
 exports.putReview = function(req, res) {
     console.log('SERVER: PUT review request')
 
-    Recipe.findByIdAndUpdate(
+    Review.findByIdAndUpdate(
         req.params.review_id,
         req.body,
         {
@@ -72,7 +72,7 @@ exports.putReview = function(req, res) {
 exports.deleteReview = function(req, res) {
     console.log('SERVER: delete review request')
 
-    Recipe.findById(req.params.review_id, function(err, review) {
+    Review.findById(req.params.review_id, function(err, review) {
         if (err) {
             res.status(500).send(err);
             return;

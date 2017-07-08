@@ -37,6 +37,9 @@ app.use('/api/user', userRoutes(passport));
 var recipeRoutes = require("./recipe/recipeRoutes");
 app.use('/api/recipes', recipeRoutes(passport));
 
+var reviewRoutes = require("./review/reviewRoutes");
+app.use('/api/reviews', reviewRoutes(passport));
+
 //routes for other modules to be defined here ... 
 
 module.exports = app;
