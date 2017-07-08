@@ -1,0 +1,14 @@
+.btn:active, .btn:focus {
+    color: #ffffff;
+    background-color: #18bc9c;
+    border-color: #18bc9c;
+}
+
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active
+{
+  color: #ffffff;
+  background-color: #18bc9c;
+  border-color: #18bc9c;
+}
