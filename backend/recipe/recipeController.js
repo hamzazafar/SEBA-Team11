@@ -3,8 +3,8 @@ var Recipe = require('./recipeSchema');
 
 // POST Endpoint /api/recipes
 exports.postRecipe = function(req, res) {
-    console.log('SERVER: POST recipe request')
-
+    console.log('SERVER: POST recipe request');
+    console.log(req);
     var recipe = new Recipe(req.body);
     recipe.published_date = new Date();
 
