@@ -10,9 +10,11 @@ var Ingredient = new mongoose.Schema({
 // Defining our recipe schema
 var Recipe  = new mongoose.Schema({
     title: String,
+    description: String,
     published_date: Date,
     directions: [String],
-    ingredients: [Ingredient]
+    ingredients: [Ingredient],
+
 });
 
 // Export the Mongoose model
