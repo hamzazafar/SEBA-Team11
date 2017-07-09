@@ -15,9 +15,15 @@
 
     </md-card-title>
 
+    <div map-lazy-load="https://maps.google.com/maps/api/js">
+        <ng-map center="Garching">
+            <marker position=“[48.26251190000001,11.668286500000022]” />
+        </ng-map>
+    </div>
+
     <md-card-content>
 
-  
+
 
 
         <p><b>Event Information</b> </p>
@@ -45,9 +51,9 @@
 <br/>
   <br/>
   <div class= "row"
-    <span><p><h2><b>Discussions</b></h2></p></span>
+    <p><h2><b>Discussions</b></h2></p>
     <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Comment on this Event</button>
+    <span><button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Comment on this Event</button></span>
   </div>
 </br>
 
@@ -91,13 +97,6 @@
 
         <textarea class="form-control" rows="3" id="inputName" placeholder="Review.." ng-model="$ctrl.review_comment" required=""></textarea>
 
-        <label for="rating">Please rate the recipe:</label>
-          <select class="form-control" id="rating" ng-model="$ctrl.stars">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
 
           </select>
 
