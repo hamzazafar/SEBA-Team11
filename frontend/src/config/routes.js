@@ -14,7 +14,7 @@ import RecipeSearchComponent from './../components/view-recipe-search/view-recip
 import GroupsComponent from './../components/view-groups/view-groups.component';
 import GroupComponent from './../components/view-group/view-group.component';
 import GroupCreateComponent from './../components/view-group-create/view-group-create.component';
-
+import GroupsService from './../services/groups/groups.service';
 
 
 
