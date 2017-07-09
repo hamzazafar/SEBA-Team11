@@ -1,9 +1,9 @@
 <form class="form-horizontal" name="groupForm">
   <fieldset>
-    <legend>Add a New Group</legend>
+      <legend><h2><b>Add a New Group</b></h2></legend>
 
 <!-- Name and Author -->
-
+      <br/>
     <div class="form-group">
       <label for="inputName" class="col-lg-2 control-label">Group Name</label>
       <div class="col-lg-10">
@@ -15,10 +15,10 @@
       <div class="form-group">
           <label for="inputAuthor" class="col-lg-2 control-label">Group Author</label>
           <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputAuthor" placeholder="Group Author" ng-model="$ctrl.group.author" required="">
-
+              <input type="text" class="form-control" id="inputAuthor" placeholder="$ctrl.group.author" ng-model="$ctrl.group.author" required="">
           </div>
       </div>
+
       <br/>
       <div class="form-group">
           <label for="inputDescription" class="col-lg-2 control-label">Description</label>
@@ -29,21 +29,6 @@
 
 <!-- Date and Time -->
 
-<!--      <div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
-          <input size="16" type="text" value="" readonly>
-          <span class="add-on"><i class="icon-remove"></i></span>
-          <span class="add-on"><i class="icon-calendar"></i></span>
-      </div>
-
-
-      <div class="form-group">
-          <label for="inputDateandTime" class="col-lg-2 control-label">Date and Time</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputDateandTime" placeholder="Date and Time" ng-model="$ctrl.group.meeting_date" required="">
-                <span class="help-block">Please use the format 2017-07-09 17:00</span>
-            </div>
-      </div>
-       -->
       <br/>
       <div class="form-group">
           <label for="inputDateandTime" class="col-lg-2 control-label">Date and Time</label>
@@ -53,14 +38,6 @@
               </div>
       </div>
 
-      <br/>
-      <div class="form-group">
-          <label for="inputLocation" class="col-lg-2 control-label">Location</label>
-          <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputLocation" placeholder="Type in the location" ng-model="$ctrl.group.location" required="">
-              <span class="help-block">Please use the following format: Boltzmannstraße 3, 85748, Garching bei München, Germany</span>
-          </div>
-      </div>
 
       <br/>
       <!-- Food preferences -->
@@ -87,12 +64,54 @@
           </div>
       </div>
 
+      <!-- Location -->
+
+      <br/>
+      <div class="form-group">
+          <label for="inputStreet" class="col-lg-2 control-label">Street</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputStreet" placeholder="Type in the street" ng-model="$ctrl.group.location.street" required="">
+          </div>
+      </div>
+
+      <br/>
+      <div class="form-group">
+          <label for="inputNumber" class="col-lg-2 control-label">Street number</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputNumber" placeholder="Type in the street number" ng-model="$ctrl.group.location.number" required="">
+          </div>
+      </div>
+
+      <br/>
+      <div class="form-group">
+          <label for="inputPostalCode" class="col-lg-2 control-label">Postal code</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputPostalCode" placeholder="Type in the postal code" ng-model="$ctrl.group.location.postal_code" required="">
+          </div>
+      </div>
+
+      <br/>
+      <div class="form-group">
+          <label for="inputCity" class="col-lg-2 control-label">City</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputCity" placeholder="Type in the city name" ng-model="$ctrl.group.location.city" required="">
+          </div>
+      </div>
+
+      <br/>
+      <div class="form-group">
+          <label for="inputCountry" class="col-lg-2 control-label">Country</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputCountry" placeholder="Type in the country" ng-model="$ctrl.group.location.country" required="">
+          </div>
+      </div>
       <!-- Cancel and Submit Buttons -->
 
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-          <button ng-disabled="!groupForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Create</button>
-        <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
+          <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default pull-right">Cancel</button>
+          <button ng-disabled="!groupForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary pull-right">Create group</button>
+
       </div>
     </div>
   </fieldset>

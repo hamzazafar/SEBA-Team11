@@ -24,6 +24,7 @@ class ViewGroupCreateComponentController{
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
+        this.group.author = UserService.getCurrentUser().username;
     }
 
     cancel() {
