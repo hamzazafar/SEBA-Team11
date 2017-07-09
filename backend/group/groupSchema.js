@@ -1,12 +1,6 @@
 // Load required packages
 var mongoose = require('mongoose');
 
-//group ingredients
-var Location = new mongoose.Schema({
-    longitude: Number,
-    latitude: Number
-});
-
 
 // Defining our group schema
 var Group  = new mongoose.Schema({
@@ -15,7 +9,7 @@ var Group  = new mongoose.Schema({
     published_date: Date,
     members_list: [String],
     max_members: Number,
-    location: Location,
+    location: String,
     meeting_date: Date,
     preferences: String
 

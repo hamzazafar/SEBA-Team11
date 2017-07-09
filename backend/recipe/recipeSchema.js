@@ -23,7 +23,6 @@ var Recipe  = new mongoose.Schema({
     published_date: Date,
     directions: [String],
     ingredients: [Ingredient],
-    rating: Number,
     reviews: [Review]
 });
 
