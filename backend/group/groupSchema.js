@@ -11,7 +11,7 @@ var Group  = new mongoose.Schema({
     max_members: Number,
     location: String,
     meeting_date: Date,
-    preferences: ["meat", "vegan", "vegetarian"],
+    preferences: String,
     description: String
 
 });
