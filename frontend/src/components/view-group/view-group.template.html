@@ -2,54 +2,53 @@
     <md-card-title>
         <md-card-title-text>
             <div layout="row">
-            <span class="md-headline">{{$ctrl.recipe.title}}</span>
+              <span class="md-headline">{{$ctrl.group.title}} </span>
+              <div class="text-muted">  created on {{$ctrl.group.published_date | date:'dd/MM/yyyy'}}</div>
 
-                <div class="col-sm-2 image">
-                    <img class="img-responsive" ng-if = "$ctrl.getRating() == 1" ng-src="{{$ctrl.loadImage('1.png')}}"></img>
-                    <img class="img-responsive" ng-if = "$ctrl.getRating() == 2" ng-src="{{$ctrl.loadImage('2.png')}}"></img>
-                    <img class="img-responsive"  ng-if = "$ctrl.getRating() == 3" ng-src="{{$ctrl.loadImage('3.png')}}"></img>
-                    <img class="img-responsive"  ng-if = "$ctrl.getRating() == 4" ng-src="{{$ctrl.loadImage('4.png')}}"></img>
-                    <img class="img-responsive"  ng-if = "$ctrl.getRating() == 5" ng-src="{{$ctrl.loadImage('5.png')}}"></img>
-                </div>
-            </div>
-
-
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-icon-button" aria-label="Edit Item" ng-click="$ctrl.edit()" >
-                    <md-icon><ng-md-icon icon="mode_edit"></ng-md-icon></md-icon>
-                </md-button>
 
                 <md-button class="md-icon-button"aria-label="Delete Item" ng-click="$ctrl.delete()" >
-                    <md-icon><ng-md-icon icon="delete" ></ng-md-icon></md-icon>
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </md-button>
-            </md-card-actions>
 
-        </md-card-title-text>
+              </div>
+          </md-card-title-text>
 
     </md-card-title>
 
     <md-card-content>
-        <p><b>Description:</b> {{$ctrl.recipe.description}}</p>
-        <b><p>Ingredients:</p></b>
-        <div ng-repeat="ingredient in $ctrl.recipe.ingredients">
+
+  
+
+
+        <p><b>Event Information</b> </p>
+        <p>
+          Event Owner: {{$ctrl.group.author}} <br/>
+          <br/>
+          Date and Time: {{$ctrl.group.meeting_date | date:"EEEE, MMMM d, y 'at' h:mma"}} <br/>
+          <br/>
+          Preferences: {{$ctrl.group.preferences}} <br/>
+        </p>
+        <b><p>Members:</p></b>
+        <div ng-repeat="member in $ctrl.group.members_list">
             <div layout="row">
-                <div flex><p>[{{$index + 1}}]  {{ingredient["name"]}} </p></div>
-                <div flex><p>Quantity: {{ingredient["quantity"]}} </p></div>
+                <p>[{{$index + 1}}]  {{member}} </p>
             </div>
         </div>
+        <b><p>Open spots: {{$ctrl.getOpenSpots()}}</p></b>
     <br/>
-        <b><p>Preparation steps:</p></b>
-        <div ng-repeat="step in $ctrl.recipe.directions">
-            <p>Step {{$index + 1}}: {{step}}</p>
-        </div>
+
+      <!-- here comes the map -->
     </md-card-content>
 </md-card>
 
 
 <br/>
   <br/>
-  <span><p><h2><b>Reviews</b></h2></p></span>
-
+  <div class= "row"
+    <span><p><h2><b>Discussions</b></h2></p></span>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Comment on this Event</button>
+  </div>
 </br>
 
 <ul>
@@ -79,8 +78,6 @@
 </ul>
 
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Add Review</button>
 
   <div id="myModal" class="modal">
   <div class="modal-dialog">

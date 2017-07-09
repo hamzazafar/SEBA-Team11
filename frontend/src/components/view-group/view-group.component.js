@@ -23,10 +23,15 @@ class ViewGroupComponentController{
     constructor($state,GroupsService,UserService){
         this.$state = $state;
         this.group = {};
+        this.model = {};
         this.GroupsService = GroupsService;
         this.UserService = UserService;
     }
 
+    $onInit() {
+        //Clone the Group Data
+        this.model = JSON.parse(JSON.stringify(this.group))
+    }
 
     save() {
         let _id = this.group['_id'];
@@ -64,7 +69,14 @@ class ViewGroupComponentController{
 
     loadImage(image) {
     return require('file-loader!../../assets/' + image);
-};
+
+    };
+
+    getOpenSpots() {
+      return this.model.max_members - this.model.members_list.length
+    };
+
+
 
     static get $inject(){
         return ['$state', GroupsService.name, UserService.name];
