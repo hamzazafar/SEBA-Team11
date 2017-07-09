@@ -1,6 +1,13 @@
 // Load required packages
 var mongoose = require('mongoose');
 
+var Location = new mongoose.Schema({
+    street: String,
+    number: String,
+    postal_code: String,
+    city: String,
+    country: String
+});
 
 // Defining our group schema
 var Group  = new mongoose.Schema({
@@ -9,7 +16,7 @@ var Group  = new mongoose.Schema({
     published_date: Date,
     members_list: [String],
     max_members: Number,
-    location: String,
+    location: [Location],
     meeting_date: Date,
     preferences: String,
     description: String
