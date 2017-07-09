@@ -37,6 +37,9 @@ app.use('/api/user', userRoutes(passport));
 var recipeRoutes = require("./recipe/recipeRoutes");
 app.use('/api/recipes', recipeRoutes(passport));
 
+var groupRoutes = require("./group/groupRoutes");
+app.use('/api/groups', groupRoutes(passport));
+
 
 //routes for other modules to be defined here ...
 

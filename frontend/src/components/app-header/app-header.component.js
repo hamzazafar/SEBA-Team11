@@ -41,6 +41,10 @@ class AppHeaderComponentController{
         return user.username;
     }
 
+    groups(){
+        this.$state.go('groups',{});
+    }
+
     recipes(){
         this.$state.go('recipes',{});
     }

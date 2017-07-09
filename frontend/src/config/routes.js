@@ -21,6 +21,16 @@ function resolveRecipes(recipesService){
     return recipesService.list();
 }
 
+resolveGroup.$inject = ['$stateParams', GroupsService.name];
+function resolveGroup($stateParams,groupsService){
+    return groupsService.get($stateParams.groupId);
+}
+
+resolveGroups.$inject = [GroupsService.name];
+function resolveGroups(groupsService){
+    return groupsService.list();
+}
+
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config ($stateProvider, $urlRouterProvider){
