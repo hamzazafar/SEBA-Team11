@@ -3,12 +3,19 @@
 import LoginComponent from './../components/view-login/view-login.component';
 import RegisterComponent from './../components/view-register/view-register.component';
 import AboutComponent from './../components/view-about/view-about.component';
+
 import RecipesComponent from './../components/view-recipes/view-recipes.component';
 import RecipeComponent from './../components/view-recipe/view-recipe.component';
 import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-edit.component';
 import RecipeCreateComponent from './../components/view-recipe-create/view-recipe-create.component';
 import RecipesService from './../services/recipes/recipes.service';
 import RecipeSearchComponent from './../components/view-recipe-search/view-recipe-search.component';
+
+import GroupsComponent from './../components/view-groups/view-groups.component';
+import GroupComponent from './../components/view-group/view-group.component';
+import GroupCreateComponent from './../components/view-group-create/view-group-create.component';
+
+
 
 
 resolveRecipe.$inject = ['$stateParams', RecipesService.name];
@@ -80,4 +87,23 @@ export default function config ($stateProvider, $urlRouterProvider){
             url: '/',
             component: RecipeSearchComponent.name,
         })
+        .state('groupAdd', {
+            url: '/groups/new',
+            component: GroupCreateComponent.name
+        })
+        .state('group', {
+            url: '/groups/:groupId',
+            component: GroupComponent.name,
+            resolve: {
+                group : resolveGroup
+            }
+        })
+        .state('groups', {
+            url: '/groups',
+            component: GroupsComponent.name,
+            resolve: {
+                groups : resolveGroups
+            }
+        })
+
 }

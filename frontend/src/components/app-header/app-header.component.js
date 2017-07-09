@@ -74,6 +74,10 @@ class AppHeaderComponentController{
       this.$state.go('recipeAdd',{})
     }
 
+    newGroup(){
+      this.$state.go('groupAdd',{})
+    }
+
     recipeSearch(){
         this.$state.go('recipeSearch',{})
     }

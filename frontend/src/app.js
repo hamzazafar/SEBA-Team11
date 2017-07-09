@@ -26,6 +26,10 @@ import ViewRecipeEdit from './components/view-recipe-edit/view-recipe-edit';
 import ViewRecipeCreate from './components/view-recipe-create/view-recipe-create';
 import ViewRecipeSearch from  './components/view-recipe-search/view-recipe-search';
 
+import ViewGroups from './components/view-groups/view-groups';
+import ViewGroup from './components/view-recipe/view-group';
+import ViewGroupCreate from './components/view-group-create/view-group-create';
+
 let app = angular.module('app', [
     uiRouter,
     angularMaterial,
@@ -42,7 +46,12 @@ let app = angular.module('app', [
     ViewRecipe.name,
     ViewRecipeEdit.name,
     ViewRecipeCreate.name,
-    ViewRecipeSearch.name
+    ViewRecipeSearch.name,
+
+    ViewGroups.name,
+    ViewGroup.name,
+    ViewGroupCreate.name
+
 ]);
 
 app.constant('API_URL', 'http://localhost:3000/api');
