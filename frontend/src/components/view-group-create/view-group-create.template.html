@@ -60,7 +60,7 @@
       <div class="form-group">
           <label for="inputMaxNr" class="col-lg-2 control-label">Maximum number of members</label>
           <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputMaxNr" placeholder="Maximum number" ng-model="$ctrl.group.max_members" required="">
+              <input type="text" class="form-control" id="inputMaxNr" placeholder="Define a maximum limit for how many members can join the group" ng-model="$ctrl.group.max_members" required="">
           </div>
       </div>
 
@@ -68,50 +68,44 @@
 
       <br/>
       <div class="form-group">
-          <label for="inputStreet" class="col-lg-2 control-label">Street</label>
-          <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputStreet" placeholder="Type in the street" ng-model="$ctrl.group.location.street" required="">
+      <label class="col-lg-2 control-label">Street name and number</label>
+      <div layout-gt-sm="row">
+          <div class="col-lg-9">
+              <input type="text" class="form-control" placeholder="Type in the street name" ng-model="$ctrl.group.location.street" >
           </div>
+
+          <div class="col-lg-3">
+              <input type="text" class="form-control" placeholder="Street number" ng-model="$ctrl.group.location.number" >
+          </div>
+
+      </div>
       </div>
 
       <br/>
       <div class="form-group">
-          <label for="inputNumber" class="col-lg-2 control-label">Street number</label>
-          <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputNumber" placeholder="Type in the street number" ng-model="$ctrl.group.location.number" required="">
+          <label class="col-lg-2 control-label">Postal code, city and country</label>
+          <div layout-gt-sm="row">
+              <div class="col-lg-3">
+                  <input type="text" class="form-control" placeholder="Postal code" ng-model="$ctrl.group.location.postal_code" >
+              </div>
+              <div class="col-lg-5">
+                  <input type="text" class="form-control" placeholder="City" ng-model="$ctrl.group.location.city" >
+              </div>
+
+              <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Country" ng-model="$ctrl.group.location.country" >
+              </div>
+
           </div>
       </div>
 
-      <br/>
-      <div class="form-group">
-          <label for="inputPostalCode" class="col-lg-2 control-label">Postal code</label>
-          <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputPostalCode" placeholder="Type in the postal code" ng-model="$ctrl.group.location.postal_code" required="">
-          </div>
-      </div>
-
-      <br/>
-      <div class="form-group">
-          <label for="inputCity" class="col-lg-2 control-label">City</label>
-          <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputCity" placeholder="Type in the city name" ng-model="$ctrl.group.location.city" required="">
-          </div>
-      </div>
-
-      <br/>
-      <div class="form-group">
-          <label for="inputCountry" class="col-lg-2 control-label">Country</label>
-          <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputCountry" placeholder="Type in the country" ng-model="$ctrl.group.location.country" required="">
-          </div>
-      </div>
       <!-- Cancel and Submit Buttons -->
 
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-          <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default pull-right">Cancel</button>
-          <button ng-disabled="!groupForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary pull-right">Create group</button>
 
+          <button ng-disabled="!groupForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary ">Create group</button>
+          <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default ">Cancel</button>
       </div>
     </div>
   </fieldset>

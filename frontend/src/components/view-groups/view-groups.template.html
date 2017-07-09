@@ -25,7 +25,7 @@
         </div>
 
         <div layout="column" layout-align=" end end">
-            <md-button class="md-icon-button " aria-label="Delete Item" ng-click="$ctrl.delete(group)">
+            <md-button ng-if="$ctrl.UserService.getCurrentUser().username == group.author" class="md-icon-button " aria-label="Delete Item" ng-click="$ctrl.delete(group)">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </md-button>
         </div>
