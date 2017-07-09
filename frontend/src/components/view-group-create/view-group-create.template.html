@@ -1,118 +1,70 @@
 <form class="form-horizontal" name="groupForm">
-    <fieldset>
-        <legend>Create a New Group</legend>
+  <fieldset>
+    <legend>Add a New Group</legend>
 
-        <!-- Name and Author -->
+<!-- Name and Author -->
 
-        <div class="form-group">
-            <label for="inputName" class="col-lg-2 control-label">Name</label>
+    <div class="form-group">
+      <label for="inputName" class="col-lg-2 control-label">Group Name</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputName" placeholder="Group Name" ng-model="$ctrl.group.title" required="">
+      </div>
+    </div>
+
+      <div class="form-group">
+          <label for="inputAuthor" class="col-lg-2 control-label">Group Author</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputAuthor" placeholder="Group Author" ng-model="$ctrl.group.author" required="">
+
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="inputFoodPreferences" class="col-lg-2 control-label">Food preferences</label>
+          <div class="col-lg-10">
+              <textarea class="form-control" id="inputFoodPreferences" rows = "4" placeholder="Food preferences" ng-model="$ctrl.group.preferences" required=""></textarea>
+          </div>
+      </div>
+
+<!-- Date and Time -->
+
+<!--      <div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+          <input size="16" type="text" value="" readonly>
+          <span class="add-on"><i class="icon-remove"></i></span>
+          <span class="add-on"><i class="icon-calendar"></i></span>
+      </div>
+
+
+      <div class="form-group">
+          <label for="inputDateandTime" class="col-lg-2 control-label">Date and Time</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="$ctrl.group.title" required="">
+                <input type="text" class="form-control" id="inputDateandTime" placeholder="Date and Time" ng-model="$ctrl.group.meeting_date" required="">
+                <span class="help-block">Please use the format 2017-07-09 17:00</span>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputAuthor" class="col-lg-2 control-label">Author</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputAuthor" placeholder="Author" ng-model="&ctrl.group.author" required="">
-            </div>
-        </div>
+      </div>
+       -->
+      <div class="form-group">
+          <label for="inputDateandTime" class="col-lg-2 control-label">Date and Time</label>
+          <div class="col-lg-10">
+                  <md-datepicker id="inputDateandTime" md-placeholder="Enter date" ng-model="$ctrl.group.meeting_date"></md-datepicker>
 
+              </div>
+      </div>
+      <!-- Maximum number of members -->
 
-        <div class="form-group">
-            <label for="inputFoodPreferences" class="col-lg-2 control-label">Food preferences</label>
-            <div class="col-lg-10">
-                <textarea class="form-control" id="inputFoodPreferences" rows = "4" placeholder="Food preferences" ng-model="$ctrl.group.preferences" required=""></textarea>
-            </div>
-        </div>
-    </fieldset>
+      <div class="form-group">
+          <label for="inputMaxNr" class="col-lg-2 control-label">Maximum number of members</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputMaxNr" placeholder="Maximum number" ng-model="$ctrl.group.max_members" required="">
+          </div>
+      </div>
+
+      <!-- Cancel and Submit Buttons -->
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+          <button ng-disabled="!groupForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Create</button>
+        <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </fieldset>
 </form>
-
-        <!-- Date & Time -->
-   <!--
-        <div class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
-            <input size="16" type="text" value="" readonly>
-            <span class="add-on"><i class="icon-remove"></i></span>
-            <span class="add-on"><i class="icon-calendar"></i></span>
-        </div>
-         
-        <script type="text/javascript">
-            $(".form_datetime").datetimepicker({
-                format: "dd MM yyyy - hh:ii",
-                autoclose: true,
-                todayBtn: true,
-                startDate: "2013-02-14 10:00",
-                minuteStep: 10
-            });
-        </script>
-        -->
-
-        <!-- Ingredients -->
-<!--
-        <div class="form-group">
-            <div ng-if="$ctrl.recipe.ingredients.length > 0" class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Ingredients</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li style="list-style: none;" ng-repeat="i in $ctrl.recipe.ingredients track by $index">
-                            <h5> [{{$index + 1}}] {{i.name + "&emsp;" + i.quantity}} </h5>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <label class="col-lg-2 control-label">Ingredient</label>
-            <div layout-gt-sm="row">
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" placeholder="Ingredient" ng-model="$ctrl.iName" maxlength="20">
-                </div>
-
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" placeholder="Quantity" ng-model="$ctrl.iQuantity" maxlength="20">
-                </div>
-                <button class="btn btn-info btn-sm" ng-click="$ctrl.addIngredient()">Add</button>
-            </div>
-        </div>
-
-        <!-- Directions -->
-
-  <!--      <div class="form-group">
-            <div ng-if="$ctrl.recipe.directions.length > 0" class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Cooking Directions</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li style="list-style: none;" ng-repeat="d in $ctrl.recipe.directions track by $index">
-                            <h5> [Step {{$index + 1}}] {{d}} </h5>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <label for="directions" class="col-lg-2 control-label">Directions</label>
-            <div layout-gt-sm="row">
-                <div class="col-lg-12">
-                    <input class="form-control" id="directions" ng-model="$ctrl.temp" placeholder="Step..."></input>
-                </div>
-
-
-
-                <button class="btn btn-info btn-sm" type="button" ng-click="$ctrl.addDirection()">Add</button>
-            </div>
-
-        </div>
-
-
-        <!-- Cancel and Submit Buttons -->
-
-  <!--      <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Submit</button>
-                <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
-            </div>
-        </div>
-    </fieldset>
-</form>
-

@@ -1,10 +1,9 @@
 'use strict';
 
-import template from './view-group-create.component';
+import template from './view-group-create.template.html';
 
 import GroupsService from './../../services/groups/groups.service';
 import UserService from './../../services/user/user.service';
-
 
 
 class ViewGroupCreateComponent {
@@ -20,6 +19,8 @@ class ViewGroupCreateComponent {
 
 class ViewGroupCreateComponentController{
     constructor($state, GroupsService,UserService){
+        this.group = {};
+        this.temp = "";
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
@@ -35,6 +36,7 @@ class ViewGroupCreateComponentController{
             this.$state.go('group',{ groupId:_id});
         });
     };
+
 
 
 

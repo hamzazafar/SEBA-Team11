@@ -28,7 +28,7 @@ import ViewRecipeSearch from  './components/view-recipe-search/view-recipe-searc
 
 import ViewGroups from './components/view-groups/view-groups';
 import ViewGroup from './components/view-group/view-group';
-import ViewGroupCreate from './components/view-group-create/view-group-create';
+import ViewGroupCreate from './components/view-group-create/view-group-create'
 
 let app = angular.module('app', [
     uiRouter,
