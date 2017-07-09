@@ -16,7 +16,7 @@ var Group  = new mongoose.Schema({
     published_date: Date,
     members_list: [String],
     max_members: Number,
-    location: [Location],
+    location: Location,
     meeting_date: Date,
     preferences: String,
     description: String

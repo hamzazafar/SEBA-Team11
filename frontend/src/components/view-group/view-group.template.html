@@ -15,9 +15,10 @@
 
     </md-card-title>
 
+
     <div map-lazy-load="https://maps.google.com/maps/api/js">
-        <ng-map center="Garching">
-            <marker position=“[48.26251190000001,11.668286500000022]” />
+        <ng-map center="{{$ctrl.getLatitude()}}, {{$ctrl.getLongitude()}}">
+            <marker position="{{$ctrl.getLatitude()}}, {{$ctrl.getLongitude()}}"/>
         </ng-map>
     </div>
 

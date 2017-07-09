@@ -1,11 +1,19 @@
-
-<div map-lazy-load="https://maps.google.com/maps/api/js">
-    <ng-map center="Garching">
-        <marker position=“[48.26251190000001,11.668286500000022]” />
+<div class="row">
+<div class="col-md-6">
+  <div ng-repeat="group in $ctrl.groups">
+    {{$ctrl.getLocation(group)}}   " />
+  </div>
+</div>
+<div class= "col-md-6" map-lazy-load="https://maps.google.com/maps/api/js">
+    <ng-map center="Germany" zoom="5">
+      <div ng-repeat="group in $ctrl.groups">
+        <marker position="{{$ctrl.getLocation(group)}}" />
+      </div>
     </ng-map>
 </div>
+</div>
 
-<md-list>
+<md-list class= "col-md-12">
 
     <md-list-item aria-label="Group" ng-click="$ctrl.details(group)" class="md-3-line" ng-repeat="group in $ctrl.groups">
         <md-icon><ng-md-icon icon="insert_drive_file"></ng-md-icon></md-icon>
@@ -31,5 +39,3 @@
 <md-button class="md-fab md-fab-bottom-right md-ink-ripple" aria-label="New Group" ng-click="$ctrl.newGroup()">
     <md-icon><ng-md-icon icon="add"></ng-md-icon></md-icon>
 </md-button>
-
-

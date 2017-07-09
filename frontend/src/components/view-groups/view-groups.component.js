@@ -24,6 +24,7 @@ class ViewGroupsComponentController {
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
+
     }
 
     details (group) {
@@ -62,6 +63,11 @@ class ViewGroupsComponentController {
             this.$state.go('login',{});
         }
     };
+
+    getLocation(group) {
+
+      return group.location.street + " "+group.location.number+", "+group.location.postal_code+" "+group.location.city+", "+group.location.country;
+    }
 
     static get $inject(){
         return ['$state', GroupsService.name, UserService.name];

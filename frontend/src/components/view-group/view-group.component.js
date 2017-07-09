@@ -76,6 +76,13 @@ class ViewGroupComponentController{
       return this.model.max_members - this.model.members_list.length
     };
 
+    getLatitude() {
+      return this.model.location.latitude;
+    }
+
+    getLongitude() {
+      return this.model.location.longitude;
+    }
 
 
     static get $inject(){
