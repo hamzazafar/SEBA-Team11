@@ -31,6 +31,7 @@ class ViewGroupComponentController{
     $onInit() {
         //Clone the Group Data
         this.model = JSON.parse(JSON.stringify(this.group))
+        document.getElementById("groupLocation").src = this.getLocationFromUrl()
     }
 
     save() {
@@ -76,15 +77,11 @@ class ViewGroupComponentController{
       return this.model.max_members - this.model.members_list.length
     };
 
-    getLatitude() {
-      return this.model.location.latitude;
+    getLocationFromUrl(){
+        return "https://www.google.com/maps/embed/v1/place?key=AIzaSyDoqhTLVB9GuBZmAQtgkCnVyfEInomTH0M&q="+this.model.location.street+"+"+this.model.location.number+","+this.model.location.city+"+"+this.model.location.country;
+
     }
-
-    getLongitude() {
-      return this.model.location.longitude;
-    }
-
-
+    
     static get $inject(){
         return ['$state', GroupsService.name, UserService.name];
     }
