@@ -2,7 +2,7 @@
 
 import template from './view-group-create.component';
 
-import GroupService from './../../services/groups/groups.service';
+import GroupsService from './../../services/groups/groups.service';
 import UserService from './../../services/user/user.service';
 
 
@@ -18,10 +18,10 @@ class ViewGroupCreateComponent {
     }
 }
 
-class ViewRGroupCreateComponentController{
-    constructor($state, GroupService,UserService){
+class ViewGroupCreateComponentController{
+    constructor($state, GroupsService,UserService){
         this.$state = $state;
-        this.RecipeService = GroupService;
+        this.GroupsService = GroupsService;
         this.UserService = UserService;
     }
 
@@ -30,7 +30,7 @@ class ViewRGroupCreateComponentController{
     };
 
     save() {
-        this.GroupService.create(this.group).then(data => {
+        this.GroupsService.create(this.group).then(data => {
             let _id = data['_id'];
             this.$state.go('group',{ groupId:_id});
         });
@@ -39,7 +39,7 @@ class ViewRGroupCreateComponentController{
 
 
     static get $inject(){
-        return ['$state', RecipeService.name, UserService.name];
+        return ['$state', GroupsService.name, UserService.name];
     }
 }
 
