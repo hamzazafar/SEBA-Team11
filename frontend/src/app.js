@@ -27,7 +27,7 @@ import ViewRecipeCreate from './components/view-recipe-create/view-recipe-create
 import ViewRecipeSearch from  './components/view-recipe-search/view-recipe-search';
 
 import ViewGroups from './components/view-groups/view-groups';
-import ViewGroup from './components/view-recipe/view-group';
+import ViewGroup from './components/view-group/view-group';
 import ViewGroupCreate from './components/view-group-create/view-group-create';
 
 let app = angular.module('app', [
