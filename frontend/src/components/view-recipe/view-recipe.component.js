@@ -119,7 +119,7 @@ class ViewRecipeComponentController{
 
     }
 
-    getNumberofRevies(){
+    getNumberofReviews(){
         var countReview = this.model.reviews.length;
         return countReview;
     }
