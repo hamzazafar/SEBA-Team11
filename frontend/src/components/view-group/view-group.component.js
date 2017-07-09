@@ -1,7 +1,3 @@
-/**
- * Created by aldijanabiljali on 15.06.17.
- */
-
 'use strict';
 
 import template from './view-group.template.html';
