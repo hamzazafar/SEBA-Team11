@@ -11,6 +11,7 @@
       </div>
     </div>
 
+      <br/>
       <div class="form-group">
           <label for="inputAuthor" class="col-lg-2 control-label">Group Author</label>
           <div class="col-lg-10">
@@ -18,10 +19,11 @@
 
           </div>
       </div>
+      <br/>
       <div class="form-group">
-          <label for="inputFoodPreferences" class="col-lg-2 control-label">Food preferences</label>
+          <label for="inputDescription" class="col-lg-2 control-label">Description</label>
           <div class="col-lg-10">
-              <textarea class="form-control" id="inputFoodPreferences" rows = "4" placeholder="Food preferences" ng-model="$ctrl.group.preferences" required=""></textarea>
+              <textarea class="form-control" id="inputDescription" rows = "4" placeholder="Give a short description of this cooking group" ng-model="$ctrl.group.description" required=""></textarea>
           </div>
       </div>
 
@@ -42,6 +44,7 @@
             </div>
       </div>
        -->
+      <br/>
       <div class="form-group">
           <label for="inputDateandTime" class="col-lg-2 control-label">Date and Time</label>
           <div class="col-lg-10">
@@ -50,6 +53,7 @@
               </div>
       </div>
 
+      <br/>
       <div class="form-group">
           <label for="inputLocation" class="col-lg-2 control-label">Location</label>
           <div class="col-lg-10">
@@ -57,7 +61,24 @@
               <span class="help-block">Please use the following format: Boltzmannstraße 3, 85748, Garching bei München, Germany</span>
           </div>
       </div>
+
+      <br/>
+      <!-- Food preferences -->
+      <div class="form-group">
+          <label class="col-lg-2 control-label" for="select">Food preferences</label>
+          <div class="col-lg-10">
+              <p>Choose a category</p>
+              <select class="form-control" id="select" multiple ng-model="$ctrl.group.preferences">
+                  <option>Meat</option>
+                  <option>Vegan</option>
+                  <option>Vegetarian</option>
+              </select>
+          </div>
+      </div>
+
       <!-- Maximum number of members -->
+
+      <br/>
 
       <div class="form-group">
           <label for="inputMaxNr" class="col-lg-2 control-label">Maximum number of members</label>
