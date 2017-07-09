@@ -119,6 +119,12 @@ class ViewRecipeComponentController{
 
     }
 
+    getNumberofRevies(){
+        var countReview = this.model.reviews.length;
+        return countReview;
+    }
+
+
     loadImage(image) {
     return require('file-loader!../../assets/' + image);
 };

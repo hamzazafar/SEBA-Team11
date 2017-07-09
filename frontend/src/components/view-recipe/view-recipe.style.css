@@ -12,3 +12,10 @@
   background-color: #18bc9c;
   border-color: #18bc9c;
 }
+ .image {
+     style: "padding-left: 10px";
+ }
+
+ .text{
+     style: "padding-left:10px"
+ }
