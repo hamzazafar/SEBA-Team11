@@ -2,11 +2,12 @@
     <md-card-title>
         <md-card-title-text>
             <div layout="row">
-              <span class="md-headline col-md-8">{{$ctrl.group.title}} </span>
+              <span class="md-headline col-md-10">{{$ctrl.group.title}} </span>
 
-              <button type="button" class="btn btn-success col-md-2" >Join Event</button>
-              <button type="button" class="btn btn-primary col-md-2" >Cancel Event</button>
-                
+              <button ng-if="!($ctrl.UserService.getCurrentUser().username == $ctrl.group.author) && $ctrl.getOpenSpots()>0" type="button" class="btn btn-success pull-right col-md-2" ng-click="$ctrl.joinGroup()" >Join Event</button>
+              <button ng-if="$ctrl.UserService.getCurrentUser().username == $ctrl.group.author " type="button" class="btn btn-primary pull-right col-md-2" data-toggle="modal" data-target="#cancelEvent">Cancel Event</button>
+              <button ng-if="$ctrl.getOpenSpots()==0" type="button" class="btn btn-success disabled pull-right col-md-2">Event Full</button>
+
 
               </div>
               <div class="text-muted col-md-8">
@@ -115,6 +116,25 @@
   </li>
 </ul>
 
+
+<div class="modal fade" id="cancelEvent" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" >Confirm Event Cancellation</h4>
+                </div>
+                <div class="modal-body">
+                    <p>You are about to cancel this event, this procedure is irreversible.</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+                    <button type="button" class="btn btn-danger btn-ok" ng-click="$ctrl.delete()">Cancel Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
   <div id="myModal" class="modal">
