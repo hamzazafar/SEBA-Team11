@@ -26,6 +26,7 @@ class ViewGroupComponentController{
         this.model = {};
         this.GroupsService = GroupsService;
         this.UserService = UserService;
+        this.discussion_comment = "";
     }
 
     $onInit() {
@@ -81,7 +82,29 @@ class ViewGroupComponentController{
         return "https://www.google.com/maps/embed/v1/place?key=AIzaSyDoqhTLVB9GuBZmAQtgkCnVyfEInomTH0M&q="+this.model.location.street+"+"+this.model.location.number+","+this.model.location.city+"+"+this.model.location.country;
 
     }
-    
+
+    addComment(){
+      var comment = {};
+      comment.author = this.UserService.getCurrentUser().username;
+      comment.comment = this.discussion_comment;
+      comment.published_date = new Date();
+      this.model.comments.push(comment);
+      this.discussion_comment = "";
+
+      $('#myModal').modal('hide');
+
+      this.save();
+
+    };
+
+    deleteComment(i){
+        var index = this.model.comments.indexOf(i);
+        if (index > -1) {
+            this.model.comments.splice(index, 1);
+        }
+        this.save();
+    }
+
     static get $inject(){
         return ['$state', GroupsService.name, UserService.name];
     }

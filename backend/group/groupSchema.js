@@ -9,6 +9,12 @@ var Location = new mongoose.Schema({
     country: String
 });
 
+var Comment = new mongoose.Schema({
+    author: String,
+    published_date: Date,
+    comment: String,
+});
+
 // Defining our group schema
 var Group  = new mongoose.Schema({
     title: String,
@@ -19,7 +25,8 @@ var Group  = new mongoose.Schema({
     location: Location,
     meeting_date: Date,
     preferences: String,
-    description: String
+    description: String,
+    comments: [Comment]
 
 });
 

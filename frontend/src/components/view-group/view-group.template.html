@@ -2,11 +2,11 @@
     <md-card-title>
         <md-card-title-text>
             <div layout="row">
-              <span class="md-headline col-md-11">{{$ctrl.group.title}} </span>
+              <span class="md-headline col-md-8">{{$ctrl.group.title}} </span>
 
-                <md-button class="md-icon-button col-md-1"aria-label="Delete Item" ng-click="$ctrl.delete()" >
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </md-button>
+              <button type="button" class="btn btn-success col-md-2" >Join Event</button>
+              <button type="button" class="btn btn-primary col-md-2" >Cancel Event</button>
+                
 
               </div>
               <div class="text-muted col-md-8">
@@ -22,54 +22,74 @@
 
       </div>
       <div class="col-md-3">
-    		<address>
-    			<strong>Event Address</strong><br>
-    			{{$ctrl.group.location.street}} {{$ctrl.group.location.number}}<br>
-    			{{$ctrl.group.location.postal_code}}, {{$ctrl.group.location.city}}<br>
-    			{{$ctrl.group.location.country}}<br>
-    		</address>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{$ctrl.group.meeting_date | date:"d MMMM, y"}}</h3>
+          </div>
+          <div class="panel-body">
+            {{$ctrl.group.meeting_date | date:"EEEE 'at' h:mma"}}
+          </div>
+        </div>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            Restrictions
+            <span class="label label-danger pull-right">{{$ctrl.group.preferences}}</span>
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{$ctrl.group.members_list.length}}</span>
+            Members
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{$ctrl.getOpenSpots()}}</span>
+            Open Spots
+          </li>
+        </ul>
+
+
+<br/>
+
+
+
     	</div>
     </div>
 
 
     <md-card-content>
 
+        <p><b>Event Owner</b> {{$ctrl.group.author}} </p>
+        <address>
+    			<strong>Event Address</strong>
+    			{{$ctrl.group.location.street}} {{$ctrl.group.location.number}},
+    			{{$ctrl.group.location.postal_code}} {{$ctrl.group.location.city}},
+    			{{$ctrl.group.location.country}}
+    		</address>
+        <p><b>Short Description</b> {{$ctrl.group.description}} </p>
 
-
-
-        <p><b>Event Information</b> </p>
-        <p>
-          Event Owner: {{$ctrl.group.author}} <br/>
-          <br/>
-          Date and Time: {{$ctrl.group.meeting_date | date:"EEEE, MMMM d, y 'at' h:mma"}} <br/>
-          <br/>
-          Preferences: {{$ctrl.group.preferences}} <br/>
-        </p>
-        <b><p>Members:</p></b>
+        <b><p>Current Members</p></b>
         <div ng-repeat="member in $ctrl.group.members_list">
             <div layout="row">
                 <p>[{{$index + 1}}]  {{member}} </p>
             </div>
         </div>
-        <b><p>Open spots: {{$ctrl.getOpenSpots()}}</p></b>
-    <br/>
 
-      <!-- here comes the map -->
+
     </md-card-content>
 </md-card>
 
 
 <br/>
   <br/>
-  <div class= "row"
-    <p><h2><b>Discussions</b></h2></p>
+  <div class= "row">
+    <p class = "col-md-8 md-headline"><b>Discussions</b></p>
     <!-- Trigger the modal with a button -->
-    <span><button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Comment on this Event</button></span>
+    <h2><button type="button" class="btn btn-success col-md-4" data-toggle="modal" data-target="#myModal">Comment on this Event</button></h2>
   </div>
 </br>
 
 <ul>
-  <li style="list-style: none;" ng-repeat="review in $ctrl.model.reviews">
+  <li style="list-style: none;" ng-repeat="comment in $ctrl.model.comments">
     <div class="row">
       <div class="col-sm-1">
         <div class="thumbnail">
@@ -80,13 +100,14 @@
       <div class="col-sm-11">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <strong>{{review.author}} </strong> <span class="text-muted"> commented {{review.published_date | date:'dd/MM/yyyy'}}</span>
-            <md-button ng-if="$ctrl.UserService.getCurrentUser().username == review.author" class="md-icon-button pull-right layout-align-center-end" aria-label="Delete Item" ng-click="$ctrl.deleteReview(review)" >
-                 <md-icon><ng-md-icon icon="delete"></ng-md-icon></md-icon>
+            <strong>{{comment.author}} </strong> <span class="text-muted"> commented {{comment.published_date | date:'dd/MM/yyyy'}}</span>
+            <md-button ng-if="$ctrl.UserService.getCurrentUser().username == comment.author" class="md-icon-button pull-right layout-align-center-end" aria-label="Delete Item" ng-click="$ctrl.deleteComment(comment)" >
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
              </md-button>
+
             </div>
           <div class="panel-body">
-            {{review.comment}}
+            {{comment.comment}}
           </div><!-- /panel-body -->
         </div><!-- /panel panel-default -->
       </div><!-- /col-sm-5 -->
@@ -106,16 +127,12 @@
 
       <div class="modal-body">
 
-        <textarea class="form-control" rows="3" id="inputName" placeholder="Review.." ng-model="$ctrl.review_comment" required=""></textarea>
-
-
-          </select>
-
+        <textarea class="form-control" rows="3" id="inputName" placeholder="Review.." ng-model="$ctrl.discussion_comment" required=""></textarea>
 
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="$ctrl.addReview()" >Add Review</button>
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.addComment()" >Add Comment</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
       </div>
     </div>
