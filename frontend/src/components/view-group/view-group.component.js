@@ -46,18 +46,11 @@ class ViewGroupComponentController{
 
     };
 
-    edit () {
-
-        if (this.UserService.isAuthenticated()) {
-            let _id = this.group['_id'];
-            this.$state.go('groupEdit',{ groupId:_id});
-        } else {
-            this.$state.go('login',{});
-        }
-
-    };
-
     delete() {
+      $('#cancelEvent').modal('hide');
+      $('.modal-backdrop').remove();
+
+
         if (this.UserService.isAuthenticated()) {
             let _id = this.group['_id'];
 
@@ -67,12 +60,14 @@ class ViewGroupComponentController{
         } else {
             this.$state.go('login',{});
         }
-    };
 
-    loadImage(image) {
-    return require('file-loader!../../assets/' + image);
 
     };
+
+    joinGroup(){
+      this.model.members_list.push(this.UserService.getCurrentUser().username);
+      this.save();
+    }
 
     getOpenSpots() {
       return this.model.max_members - this.model.members_list.length
