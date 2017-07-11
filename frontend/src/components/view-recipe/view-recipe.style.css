@@ -1,3 +1,4 @@
+
 .btn:active, .btn:focus {
     color: #ffffff;
     background-color: #18bc9c;
@@ -13,4 +14,80 @@
   border-color: #18bc9c;
 }
 
+.a {
+  width:35px;
+  line-height:1;
+}
 
+.b {
+  height:9px;
+  margin:5px 0;
+}
+
+.c {
+  width:180px;
+}
+
+.d {
+  height:9px;
+  margin:8px 0;
+}
+
+.e {
+  width: 1000%;
+}
+
+.f {
+  margin-left:10px;
+}
+
+.btn-grey{
+    background-color:#D8D8D8;
+	color:#FFF;
+}
+
+.layout-row {
+  padding-bottom: 5px;
+}
+
+.scroll
+{
+   overflow:auto;
+   height: 300px;
+}
+
+.bold{
+	font-weight:700;
+}
+.padding-bottom-7{
+	padding-bottom:7px;
+}
+
+.thumbnail {
+    padding:0px;
+}
+.panel {
+	position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.panel>.panel-heading:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.panel>.panel-heading:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}

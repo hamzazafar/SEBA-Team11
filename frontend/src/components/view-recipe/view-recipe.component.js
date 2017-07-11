@@ -7,6 +7,8 @@
 import template from './view-recipe.template.html';
 import RecipesService from './../../services/recipes/recipes.service';
 import UserService from './../../services/user/user.service';
+import './view-recipe.style.css';
+
 
 class ViewRecipeComponent {
     constructor(){
@@ -99,6 +101,7 @@ class ViewRecipeComponentController{
         this.save();
     }
 
+
     getRating() {
       var countReviews = this.model.reviews.length;
       console.log(countReviews)
@@ -114,20 +117,44 @@ class ViewRecipeComponentController{
         return 5;
       } else {
 
-       return Math.round(sumReviews/countReviews);
+       return Math.round((sumReviews/countReviews)*10)/10;
      }
+   };
 
-    }
+   getRoundedRating(){
+     var number = this.getRating();
+     return Math.round(number);
+   };
+   getNumberOfFilledStars() {
+     return new Array(this.getRoundedRating());
+   };
+
+   getNumberOfEmptyStars() {
+     return new Array(5-this.getRoundedRating());
+   };
 
     getNumberofReviews(){
         var countReview = this.model.reviews.length;
         return countReview;
     }
 
+    numberOfReviewsWithStar(number){
+      var stars_count=0;
+      var i=0;
+      for(i; i < this.model.reviews.length; i++ ){
+        if (this.model.reviews[i].stars==number){
+          stars_count++;
+        }
+      }
+      return stars_count;
+    };
+
 
     loadImage(image) {
         return require('file-loader!../../assets/' + image);
     }
+
+
 
     static get $inject(){
         return ['$state', RecipesService.name, UserService.name];
