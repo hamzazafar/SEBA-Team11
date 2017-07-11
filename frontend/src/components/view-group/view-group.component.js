@@ -3,6 +3,7 @@
 import template from './view-group.template.html';
 import GroupsService from './../../services/groups/groups.service';
 import UserService from './../../services/user/user.service';
+import './view-group.style.css';
 
 class ViewGroupComponent {
     constructor(){
@@ -96,6 +97,14 @@ class ViewGroupComponentController{
         var index = this.model.comments.indexOf(i);
         if (index > -1) {
             this.model.comments.splice(index, 1);
+        }
+        this.save();
+    }
+
+    exitGroup(user){
+        var index = this.model.members_list.indexOf(user);
+        if (index > -1) {
+            this.model.members_list.splice(index, 1);
         }
         this.save();
     }

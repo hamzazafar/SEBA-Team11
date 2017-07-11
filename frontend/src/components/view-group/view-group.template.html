@@ -4,26 +4,27 @@
             <div layout="row">
               <span class="md-headline col-md-10">{{$ctrl.group.title}} </span>
 
-              <button ng-if="!($ctrl.UserService.getCurrentUser().username == $ctrl.group.author) && $ctrl.getOpenSpots()>0" type="button" class="btn btn-success pull-right col-md-2" ng-click="$ctrl.joinGroup()" >Join Event</button>
-              <button ng-if="$ctrl.UserService.getCurrentUser().username == $ctrl.group.author " type="button" class="btn btn-primary pull-right col-md-2" data-toggle="modal" data-target="#cancelEvent">Cancel Event</button>
+              <button ng-if="!($ctrl.UserService.getCurrentUser().username == $ctrl.group.author) && $ctrl.getOpenSpots()>0 && !$ctrl.group.members_list.includes($ctrl.UserService.getCurrentUser().username)" type="button" class="btn btn-success pull-right col-md-2" ng-click="$ctrl.joinGroup()" >Join Event</button>
+              <button ng-if="$ctrl.UserService.getCurrentUser().username == $ctrl.group.author" type="button" class="btn btn-primary pull-right col-md-2" data-toggle="modal" data-target="#cancelEvent">Cancel Event</button>
               <button ng-if="$ctrl.getOpenSpots()==0" type="button" class="btn btn-success disabled pull-right col-md-2">Event Full</button>
-
+              <button ng-if="$ctrl.group.members_list.includes($ctrl.UserService.getCurrentUser().username)" type="button" class="btn btn-success pull-right col-md-2" ng-click="$ctrl.exitGroup($ctrl.UserService.getCurrentUser().username)" >Exit Event</button>
 
               </div>
               <div class="text-muted col-md-8">
                 created on {{$ctrl.group.published_date | date:'dd/MM/yyyy'}}
               </div>
           </md-card-title-text>
-
     </md-card-title>
 
+
     <div class= "row">
+      <!-- map -->
       <div class="col-md-9">
             	<iframe id= "groupLocation" width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="" ></iframe>
-
       </div>
       <div class="col-md-3">
 
+<!-- date and time information -->
         <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">{{$ctrl.group.meeting_date | date:"d MMMM, y"}}</h3>
@@ -33,6 +34,7 @@
           </div>
         </div>
 
+<!-- other evenr information on the right side of the map -->
         <ul class="list-group">
           <li class="list-group-item">
             Restrictions
@@ -47,18 +49,12 @@
             Open Spots
           </li>
         </ul>
-
-
-<br/>
-
-
-
+        <br/>
     	</div>
     </div>
 
-
+<!-- under map -->
     <md-card-content>
-
         <p><b>Event Owner</b> {{$ctrl.group.author}} </p>
         <address>
     			<strong>Event Address</strong>
@@ -67,56 +63,50 @@
     			{{$ctrl.group.location.country}}
     		</address>
         <p><b>Short Description</b> {{$ctrl.group.description}} </p>
-
-        <b><p>Current Members</p></b>
-        <div ng-repeat="member in $ctrl.group.members_list">
-            <div layout="row">
-                <p>[{{$index + 1}}]  {{member}} </p>
-            </div>
+        <p><b>Current Members</b></p>
+        <div ng-repeat="member in $ctrl.model.members_list track by $index">
+                <p class= "members">[{{$index + 1}}]  {{member}} </p>
         </div>
-
 
     </md-card-content>
 </md-card>
 
-
+<!-- Discussions section -->
 <br/>
   <br/>
   <div class= "row">
     <p class = "col-md-8 md-headline"><b>Discussions</b></p>
     <!-- Trigger the modal with a button -->
-    <h2><button type="button" class="btn btn-success col-md-4" data-toggle="modal" data-target="#myModal">Comment on this Event</button></h2>
+    <h2><button ng-if="$ctrl.group.members_list.includes($ctrl.UserService.getCurrentUser().username) || ($ctrl.UserService.getCurrentUser().username == $ctrl.group.author)" type="button" class="btn btn-success col-md-4" data-toggle="modal" data-target="#myModal">Comment on this Event</button></h2>
   </div>
 </br>
 
+
 <ul>
   <li style="list-style: none;" ng-repeat="comment in $ctrl.model.comments">
-    <div class="row">
-      <div class="col-sm-1">
-        <div class="thumbnail">
-          <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-        </div><!-- /thumbnail -->
-      </div><!-- /col-sm-1 -->
+    <div >
+                <div id="tb-testimonial" class="testimonial testimonial-primary">
+                    <div class="testimonial-section">
+                        {{comment.comment}}
+                        <md-button ng-if="$ctrl.UserService.getCurrentUser().username == comment.author" class="md-icon-button pull-right layout-align-center-end" aria-label="Delete Item" ng-click="$ctrl.deleteComment(comment)" >
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                         </md-button>
+                    </div>
+                    <div class="testimonial-desc">
+                        <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" />
+                        <div class="testimonial-writer">
+                        	<div class="testimonial-writer-name">{{comment.author}} <span class="text-muted"> commented {{comment.published_date | date:'dd/MM/yyyy'}}</span></div>
+                        	<span ng-if="comment.author == $ctrl.group.author" class="label label-success">Owner</span>
 
-      <div class="col-sm-11">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong>{{comment.author}} </strong> <span class="text-muted"> commented {{comment.published_date | date:'dd/MM/yyyy'}}</span>
-            <md-button ng-if="$ctrl.UserService.getCurrentUser().username == comment.author" class="md-icon-button pull-right layout-align-center-end" aria-label="Delete Item" ng-click="$ctrl.deleteComment(comment)" >
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-             </md-button>
+                        </div>
+                    </div>
+                </div>
+    		</div>
 
-            </div>
-          <div class="panel-body">
-            {{comment.comment}}
-          </div><!-- /panel-body -->
-        </div><!-- /panel panel-default -->
-      </div><!-- /col-sm-5 -->
-    </div>
   </li>
 </ul>
 
-
+<!-- Dialog to remove event -->
 <div class="modal fade" id="cancelEvent" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -137,6 +127,7 @@
     </div>
 
 
+<!-- Dialog for adding a discussion point -->
   <div id="myModal" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -144,13 +135,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">{{$ctrl.UserService.getCurrentUser().username}}</h4>
       </div>
-
       <div class="modal-body">
-
         <textarea class="form-control" rows="3" id="inputName" placeholder="Review.." ng-model="$ctrl.discussion_comment" required=""></textarea>
-
       </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" ng-click="$ctrl.addComment()" >Add Comment</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

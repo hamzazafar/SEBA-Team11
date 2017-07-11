@@ -23,9 +23,15 @@
                   Recipes
           </button></li>
         <li>
-          <button aria-label="Cooking Groups" class="btn btn-link navbar-btn" ng-click="$ctrl.groups()">
+          <button ng-if="$ctrl.isAuthenticated()" aria-label="Cooking Groups" class="btn btn-primary navbar-btn" ng-click="$ctrl.groups()">
             <md-icon md-menu-align-target><ng-md-icon style="fill: white" icon="grade" ></ng-md-icon></md-icon>
-            <font>Cooking Groups</font>
+            <font>Cooking Events</font>
+          </button>
+        </li>
+        <li>
+          <button ng-if="!$ctrl.isAuthenticated()" aria-label="Cooking Groups" class="btn btn-primary navbar-btn disabled">
+            <md-icon md-menu-align-target><ng-md-icon style="fill: white" icon="grade" ></ng-md-icon></md-icon>
+            <font>Cooking Events</font>
           </button>
         </li>
       </ul>
