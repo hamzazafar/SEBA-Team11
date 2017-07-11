@@ -28,6 +28,20 @@ export default class RecipesService {
         });
     }
 
+    getByIngredient(ingredients) {
+        let url = this.resourceUrl+'get/ingredients';
+        var config = { 
+                         params: {
+                             data: ingredients
+                         }
+                     }
+        return this.$http.get(url, config).then(responce => {
+            return new Promise((resolve, reject) => {
+                resolve(responce.data);
+            });
+        });
+    }
+
     get(id) {
         let url = `${ this.resourceUrl }${ id }`;
         return this.$http.get(url).then(responce => {

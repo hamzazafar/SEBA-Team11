@@ -23,6 +23,8 @@ class ViewRecipeSearchComponentController{
         this.$state = $state;
         this.RecipesService = RecipesService;
         this.tags = [];
+        this.recipes = [];
+        this.ingredients= [];
     }
 
 
@@ -46,7 +48,23 @@ class ViewRecipeSearchComponentController{
         return obj;
     };
 
+    details (recipe) {
+        let _id = recipe['_id'];
+        this.$state.go('recipe',{ recipeId:_id});
+    };
+
+    getByIngredients(){
+        
+        for(var i=0; i< this.tags.length; i++){  
+            this.ingredients.push(this.tags[i].text);
+        }
+
+        this.RecipesService.getByIngredient(this.ingredients).then(data => {
+            this.recipes = JSON.parse(JSON.stringify(data));
+        });
+
+        this.ingredients = [];
+    }
+
 }
-
-
 export default ViewRecipeSearchComponent;

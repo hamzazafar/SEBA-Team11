@@ -126,13 +126,12 @@ class ViewRecipeComponentController{
 
 
     loadImage(image) {
-    return require('file-loader!../../assets/' + image);
-};
+        return require('file-loader!../../assets/' + image);
+    }
 
     static get $inject(){
         return ['$state', RecipesService.name, UserService.name];
     }
-
 }
 
 

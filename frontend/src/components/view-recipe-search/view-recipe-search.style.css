@@ -88,3 +88,12 @@ tags-input .tags .tag-item .remove-button {
     margin-right: auto;
     margin-left: auto;
 }
+
+
+md-list-item, md-list-item .md-list-item-inner {
+    min-height: 48px;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
