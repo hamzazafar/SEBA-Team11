@@ -44,6 +44,20 @@ exports.getRecipe = function(req, res) {
     });
 };
 
+// GET Endpoint /api/recipes/ingredients
+exports.getRecipesByIngredients = function(req, res){
+    console.log('SERVER: GET receipe by ingredients')
+    console.log(req.query.data)
+    Recipe.find({"ingredients.name":{ $all: req.query.data}}, function(err, recipes){
+      if(err){
+          res.status(500).send(err)
+          return;
+      }
+      console.log(recipes.length);
+      res.json(recipes);
+    });
+};
+
 // PUT Endpoint /api/recipes/:recipe_id
 exports.putRecipe = function(req, res) {
     console.log('SERVER: PUT recipe request')

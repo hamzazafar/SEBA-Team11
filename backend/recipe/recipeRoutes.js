@@ -22,5 +22,7 @@ function recipeRoutes(passport) {
         .put(recipeController.putRecipe)
         .delete(recipeController.deleteRecipe);
 
+    router.get('/get/ingredients', recipeController.getRecipesByIngredients);
+
     return router;
 }
