@@ -28,6 +28,7 @@ class ViewRecipeCreateComponentController{
         this.$state = $state;
         this.RecipeService = RecipeService;
         this.UserService = UserService;
+        this.image= {};
     }
 
     cancel() {
@@ -53,7 +54,7 @@ class ViewRecipeCreateComponentController{
       this.recipe.ingredients.push(ingredient);
       this.iName = "";
       this.iQuantity = "";
-    }
+    };
 
     static get $inject(){
         return ['$state', RecipeService.name, UserService.name];
