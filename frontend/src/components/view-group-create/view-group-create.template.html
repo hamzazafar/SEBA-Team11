@@ -33,7 +33,7 @@
       <div class="form-group">
           <label for="inputDateandTime" class="col-lg-2 control-label">Date</label>
           <div class="col-lg-10">
-                  <md-datepicker id="inputDateandTime" md-placeholder="Choose the date" ng-model="$ctrl.var1"></md-datepicker>
+                  <md-datepicker id="inputDateandTime" md-placeholder="Choose the date" ng-model=$ctrl.var1></md-datepicker>
                     <p>{{$ctrl.var1}}</p>
               </div>
       </div>
@@ -73,7 +73,8 @@
           </div>
       </div>
 
-      <p>$ctrl.group.meeting_date = $ctrl.var1 + $ctrl.var2</p>
+      {{$ctrl.group.meeting_date}} = {{$ctrl.var1 + $ctrl.var2}}
+      <p>{{ctrl.group.meeting_date}}</p>
 
       <br/>
       <!-- Food preferences -->

@@ -52,11 +52,23 @@
                 <h4 class="modal-title" >Security Check</h4>
             </div>
             <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <input type="u" class="form-control" name="username" ng-model="$ctrl.usern" id="u"  placeholder="Enter your username"/>
 
-                <input type="question" class="form-control" name="question" ng-model="$ctrl.que" id="question"  placeholder="Enter your security question"/>
+                </div>
+            <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin" aria-hidden="true"></i></span>
+                    <input type="question" class="form-control" name="question" ng-model="$ctrl.que" id="question"  placeholder="Enter your security question"/>
 
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></span>
                 <input type="answer" class="form-control" name="answer" ng-model="$ctrl.answ" id="answer"  placeholder="Enter the answer to your question"/>
-            <!--    <button type="button" class="btn btn-default" ng-click="$ctrl.checkQuestion()">Check</button -->
+                </div>
+                    <!--    <button type="button" class="btn btn-default" ng-click="$ctrl.checkQuestion()">Check</button -->
 
                 <input ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="newpassword" class="form-control" name="newpassword" ng-model="$ctrl.UserService.getCurrentUser().password" id="newpassword"  placeholder="Enter your new password"/>
                 <input ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="newpassword2" class="form-control" name="newpassword2" ng-model="$ctrl.UserService.getCurrentUser().password2" id="newpassword2"  placeholder="Confirm your new password"/>
