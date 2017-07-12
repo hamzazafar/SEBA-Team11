@@ -10,7 +10,34 @@ var userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+
+    password2: {
+        type: String
+
+    },
+
+    fullname: {
+        type:String
+
+    },
+
+    useremail: {
+        type: String,
+
+        unique: true
+    },
+
+    question: {
+        type: String
+
+    },
+
+    answer: {
+        type: String
+
     }
+
 });
 
 userSchema.pre('save', function(next) {

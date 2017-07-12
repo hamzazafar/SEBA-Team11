@@ -7,7 +7,10 @@ function userRoutes(passport) {
     router.post('/signup', userController.signup);
     router.post('/unregister', passport.authenticate('jwt',
                                                      {session: false}),
-                                                     userController.unregister)
+                                                     userController.unregister);
+
+    router.put('/updateuser', userController.updateuser)
+
     return router;
 
 }
