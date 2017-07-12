@@ -37,7 +37,7 @@ class ViewRegisterComponentController{
         let answer= this.register.answer;
 
         this.UserService.register(user,password,password2,fullname,useremail, question,answer).then(()=> {
-            this.$state.go('/',{});
+            this.$state.go('recipeSearch',{});
         });
     }
 
