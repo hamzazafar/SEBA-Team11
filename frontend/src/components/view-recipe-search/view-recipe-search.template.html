@@ -8,7 +8,7 @@
                     <h1 class="text-center" >What's in Your Fridge?</h1>
                     <div class="text-center">
                         <tags-input ng-model="$ctrl.tags" placeholder="Type here.." add-on-paste="true">
-                            <auto-complete source="$ctrl.loadTags()"></auto-complete>
+                            <auto-complete source="$ctrl.loadTagsFromIngredients()"></auto-complete>
 
                         </tags-input>
 <button  ng-click="$ctrl.getByIngredients()" type="submit" class="btn btn-primary">Search</button>
