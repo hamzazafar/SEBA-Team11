@@ -50,6 +50,11 @@ module.exports.signup = function(req, res){
 
     user.username = req.body.username;
     user.password = req.body.password;
+    user.password2 = req.body.password2;
+    user.fullname = req.body.fullname;
+    user.useremail = req.body.useremail;
+    user.question = req.body.question;
+    user.answer = req.body.answer;
 
     user.save(function(err) {
         if (err) {
@@ -67,6 +72,26 @@ module.exports.unregister = function(req, res) {
     }, function(err){
         res.status(500).send(err);
     });
+};
+
+
+module.exports.updateuser = function(req, res) {
+
+    User.findByIdAndUpdate(
+        req.params.user_id,
+        req.body,
+        {
+            //pass the new object to cb function
+            new: true,
+            //run validations
+            runValidators: true
+        }, function (err, user) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            res.json(user);
+        });
 };
 
 function createToken(user) {

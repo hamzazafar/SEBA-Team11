@@ -1,4 +1,4 @@
-<div layout="column" layout-padding="">
+<!--<div layout="column" layout-padding="">
     <span flex="20"></span>
     <md-content class="login-form" layout="row" flex="35">
         <span flex="35"></span>
@@ -26,4 +26,97 @@
         <span flex></span>
     </md-content>
     <span flex></span>
+</div> -->
+
+ <div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <form class="" method="post" action="#" name="RegisterForm">
+
+                <div class="form-group">
+                    <label for="name" class="cols-sm-3 control-label">Your Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="name" ng-model="$ctrl.register.fullname" id="name"  placeholder="Enter your Name" required=""/>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-3 control-label">Username</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="username" ng-model="$ctrl.register.username" id="username"  placeholder="Enter your Username"/>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-3 control-label">Your Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="email" ng-model="$ctrl.register.useremail" id="email"  placeholder="Enter your Email" required=""/>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="question" class="cols-sm-3 control-label">Security question</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="question" ng-model="$ctrl.register.question" id="question"  placeholder="Enter a security question"/>
+
+                        </div>
+                        <p>Please remember this question and its answer! You will need in case you forget your password.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="answer" class="cols-sm-3 control-label">Answer</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="answer" ng-model="$ctrl.register.answer" id="answer"  placeholder="Enter the answer to your security question"/>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-3 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" ng-model="$ctrl.register.password" id="password"  placeholder="Enter your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-3 control-label">Confirm Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="confirm" ng-model="$ctrl.register.password2" id="confirm"  placeholder="Confirm your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="button" class="btn btn-primary btn-sm btn-block login-button" ng-disabled="!RegisterForm.$valid" ng-click="$ctrl.submit()">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
 </div>

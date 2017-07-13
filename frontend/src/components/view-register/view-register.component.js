@@ -30,10 +30,19 @@ class ViewRegisterComponentController{
     submit(){
         let user = this.register.username;
         let password = this.register.password;
+        let password2 = this.register.password2;
+        let fullname = this.register.fullname;
+        let useremail = this.register.useremail;
+        let question = this.register.question;
+        let answer= this.register.answer;
 
-        this.UserService.register(user,password).then(()=> {
-            this.$state.go('/',{});
+        this.UserService.register(user,password,password2,fullname,useremail, question,answer).then(()=> {
+            this.$state.go('recipeSearch',{});
         });
+    }
+
+    forgot(){
+
     }
 
     static get $inject(){

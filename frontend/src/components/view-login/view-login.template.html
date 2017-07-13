@@ -1,22 +1,86 @@
 <form name="LoginForm" class="form-horizontal">
 
-    <legend>Welcome Back!</legend>
+    <br/>
+    <legend align="center">Welcome Back!</legend>
+    <br/>
+    <div class="main-center">
     <div class="form-group">
-      <label class="col-lg-2 control-label">Username</label>
-      <div class="col-lg-10">
-        <input class="form-control" type="text" name="username" ng-model="$ctrl.login.username"  placeholder="Username" required="">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Password</label>
-      <div class="col-lg-10">
-        <input class="form-control" type="password" name="password" ng-model="$ctrl.login.password"  placeholder="Password" required="" maxlength="64">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button class="btn btn-primary" ng-disabled="!LoginForm.$valid" ng-click="$ctrl.submit()"> Login </button>
-      </div>
+        <label for="username" class="cols-sm-3 control-label">Username</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="username" ng-model="$ctrl.login.username" id="username"  placeholder="Enter your Username"/>
+
+            </div>
+        </div>
     </div>
 
+
+        <div class="form-group">
+            <label for="password" class="cols-sm-3 control-label">Password</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" name="password" ng-model="$ctrl.login.password" id="password"  placeholder="Enter your Password"/>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="form-group " >
+      <!--  <div class ="col-lg-10 col-lg-offset-2"> -->
+            <button class="btn btn-primary btn-sm button2" data-toggle="modal" data-target="#securityCheck"><i>I forgot my password</i></button>
+        </div>
+
+    <div class="form-group">
+    <!--  <div class="col-lg-10 col-lg-offset-2"> -->
+        <button class="btn btn-primary btn-block" ng-disabled="!LoginForm.$valid" ng-click="$ctrl.submit()"> Login </button>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
 </form>
+
+<!-- Dialog for security check -->
+<div class="modal fade" id="securityCheck" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" >Security Check</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <input type="u" class="form-control" name="username" ng-model="$ctrl.usern" id="u"  placeholder="Enter your username"/>
+
+                </div>
+            <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin" aria-hidden="true"></i></span>
+                    <input type="question" class="form-control" name="question" ng-model="$ctrl.que" id="question"  placeholder="Enter your security question"/>
+
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></span>
+                <input type="answer" class="form-control" name="answer" ng-model="$ctrl.answ" id="answer"  placeholder="Enter the answer to your question"/>
+                </div>
+                    <!--    <button type="button" class="btn btn-default" ng-click="$ctrl.checkQuestion()">Check</button -->
+
+                <input ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="newpassword" class="form-control" name="newpassword" ng-model="$ctrl.UserService.getCurrentUser().password" id="newpassword"  placeholder="Enter your new password"/>
+                <input ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="newpassword2" class="form-control" name="newpassword2" ng-model="$ctrl.UserService.getCurrentUser().password2" id="newpassword2"  placeholder="Confirm your new password"/>
+
+
+            </div>
+            <div class="modal-footer">
+                <button ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+                <button ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="button" class="btn btn-danger btn-ok" ng-click="$ctrl.updatePassword()">Submit</button>
+                <button ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == false" type="button" class="btn btn-default button2" data-dismiss="modal">Wrong input</button>
+
+            </div>
+        </div>
+    </div>
+</div>

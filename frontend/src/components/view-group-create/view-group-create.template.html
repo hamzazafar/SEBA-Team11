@@ -31,13 +31,50 @@
 
       <br/>
       <div class="form-group">
-          <label for="inputDateandTime" class="col-lg-2 control-label">Date and Time</label>
+          <label for="inputDateandTime" class="col-lg-2 control-label">Date</label>
           <div class="col-lg-10">
-                  <md-datepicker id="inputDateandTime" md-placeholder="Enter date" ng-model="$ctrl.group.meeting_date"></md-datepicker>
-
+                  <md-datepicker id="inputDateandTime" md-placeholder="Choose the date" ng-model=$ctrl.var1></md-datepicker>
+                    <p>{{$ctrl.var1}}</p>
               </div>
       </div>
 
+
+      <br/>
+
+      <div class="form-group">
+          <label class="col-lg-2 control-label" for="select1">Time</label>
+          <div class="col-lg-10">
+              <select class="form-control" id="select1" ng-model="&ctrl.var2">
+                  <option>12 AM</option>
+                  <option>1 AM</option>
+                  <option>2 AM</option>
+                  <option>3 AM</option>
+                  <option>4 AM</option>
+                  <option>5 AM</option>
+                  <option>6 AM</option>
+                  <option>7 AM</option>
+                  <option>8 AM</option>
+                  <option>9 AM</option>
+                  <option>10 AM</option>
+                  <option>11 AM</option>
+                  <option>12 PM</option>
+                  <option>1 PM</option>
+                  <option>2 PM</option>
+                  <option>3 PM</option>
+                  <option>4 PM</option>
+                  <option>5 PM</option>
+                  <option>6 PM</option>
+                  <option>7 PM</option>
+                  <option>8 PM</option>
+                  <option>9 PM</option>
+                  <option>10 PM</option>
+                  <option>11 PM</option>
+              </select>
+          </div>
+      </div>
+
+      {{$ctrl.group.meeting_date}} = {{$ctrl.var1 + $ctrl.var2}}
+      <p>{{ctrl.group.meeting_date}}</p>
 
       <br/>
       <!-- Food preferences -->

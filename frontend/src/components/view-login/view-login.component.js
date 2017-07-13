@@ -39,6 +39,21 @@ class ViewLoginComponentController{
         });
     }
 
+
+    updatePassword(){
+        let user = this.UserService.getCurrentUser().username;
+        let password = this.UserService.getCurrentUser().password;
+        let password2 = this.UserService.getCurrentUser().password2;
+        let fullname = this.UserService.getCurrentUser().fullname;
+        let useremail = this.UserService.getCurrentUser().useremail;
+        let question = this.UserService.getCurrentUser().question;
+        let answer= this.UserService.getCurrentUser().answer;
+
+        this.UserService.register(user,password,password2,fullname,useremail, question,answer).then(()=> {
+            this.$state.go('/',{});
+        });
+    }
+
     static get $inject(){
         return ['$state', UserService.name];
     }
