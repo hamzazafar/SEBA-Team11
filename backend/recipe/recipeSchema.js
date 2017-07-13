@@ -23,7 +23,8 @@ var Recipe  = new mongoose.Schema({
     published_date: Date,
     directions: [String],
     ingredients: [Ingredient],
-    reviews: [Review]
+    reviews: [Review],
+    image: String
 });
 
 // Export the Mongoose model

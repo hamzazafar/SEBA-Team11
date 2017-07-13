@@ -81,6 +81,9 @@ class AppHeaderComponentController{
     recipeSearch(){
         this.$state.go('recipeSearch',{})
     }
+    search(){
+        this.$state.go('search',{})
+    }
 
     static get $inject(){
         return ['$state', UserService.name];

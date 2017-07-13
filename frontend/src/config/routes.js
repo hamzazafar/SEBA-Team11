@@ -10,6 +10,7 @@ import RecipeEditComponent from './../components/view-recipe-edit/view-recipe-ed
 import RecipeCreateComponent from './../components/view-recipe-create/view-recipe-create.component';
 import RecipesService from './../services/recipes/recipes.service';
 import RecipeSearchComponent from './../components/view-recipe-search/view-recipe-search.component';
+import SearchComponent from './../components/view-search/view-search.component';
 
 import GroupsComponent from './../components/view-groups/view-groups.component';
 import GroupComponent from './../components/view-group/view-group.component';
@@ -82,6 +83,13 @@ export default function config ($stateProvider, $urlRouterProvider){
         .state('about', {
             url: '/about',
             component: AboutComponent.name,
+        })
+        .state('search', {
+            url: '/search',
+            component: SearchComponent.name,
+            resolve: {
+                recipes : resolveRecipes
+            }
         })
         .state('recipeSearch', {
             url: '/',

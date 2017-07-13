@@ -18,29 +18,55 @@ class ViewRecipeCreateComponent {
 }
 
 class ViewRecipeCreateComponentController{
-    constructor($state, RecipeService,UserService){
+    constructor($state, RecipeService,UserService, $http, API_URL, Upload){
         this.recipe = {};
         this.temp = "";
         this.iName = "";
         this.iQuantity = "";
         this.recipe.ingredients = [];
         this.recipe.directions = [];
+        this.recipe.image = "";
         this.$state = $state;
+        this.$http = $http;
+        this.Upload = Upload;
+        this.URL = `${ API_URL }/recipes/`;
         this.RecipeService = RecipeService;
         this.UserService = UserService;
-        this.image= {};
+        this.image ={};
     }
 
     cancel() {
         this.$state.go('recipes',{});
     };
 
-    save() {
+    save(file) {
         this.RecipeService.create(this.recipe).then(data => {
             let _id = data['_id'];
             this.$state.go('recipe',{ recipeId:_id});
         });
+
+        this.uploadFile(file);
     };
+
+
+    uploadFile(file){
+      console.log(file);
+      file.upload = this.Upload.upload({
+        url: this.URL + `savedata/`,
+        data: {file: file},
+      });
+    this.recipe.image = this.URL + `uploads/` + file.name;
+    }
+    /*
+    uploadFileToUrl(file, uploadUrl){
+      let fd = new FormData();
+      fd.append('file', file);
+
+      return this.$http.post(uploadUrl, fd, {
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined}
+      });
+    }*/
 
     addDirection(){
       this.recipe.directions.push(this.temp);
@@ -57,7 +83,7 @@ class ViewRecipeCreateComponentController{
     };
 
     static get $inject(){
-        return ['$state', RecipeService.name, UserService.name];
+        return ['$state', RecipeService.name, UserService.name, '$http', 'API_URL', 'Upload'];
     }
 }
 
