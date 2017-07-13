@@ -4,6 +4,8 @@ import template from './view-recipe-create.template.html';
 
 import RecipeService from './../../services/recipes/recipes.service';
 import UserService from './../../services/user/user.service';
+import './view-recipe-create.style.css';
+
 
 
 class ViewRecipeCreateComponent {
@@ -33,6 +35,7 @@ class ViewRecipeCreateComponentController{
         this.RecipeService = RecipeService;
         this.UserService = UserService;
         this.image ={};
+        this.recipe.author = this.UserService.getCurrentUser().username;
     }
 
     cancel() {

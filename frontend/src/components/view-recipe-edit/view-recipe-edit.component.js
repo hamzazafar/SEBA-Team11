@@ -5,6 +5,7 @@ import template from './view-recipe-edit.template.html';
 
 
 import RecipeService from './../../services/recipes/recipes.service';
+import './view-recipe-edit.style.css';
 
 class ViewRecipeEditComponent {
     constructor(){

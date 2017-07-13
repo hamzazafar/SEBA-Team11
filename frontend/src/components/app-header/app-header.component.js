@@ -59,7 +59,7 @@ class AppHeaderComponentController{
 
     logout(){
         this.UserService.logout();
-        this.$state.go('/',{});
+        this.$state.go('recipeSearch',{});
     }
 
     register(){
