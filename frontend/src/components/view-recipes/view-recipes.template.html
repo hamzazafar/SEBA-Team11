@@ -1,13 +1,16 @@
 <md-list>
 
     <md-list-item aria-label="Recipe" ng-click="$ctrl.details(recipe)" class="md-3-line" ng-repeat="recipe in $ctrl.recipes">
-        <md-icon><ng-md-icon icon="insert_drive_file"></ng-md-icon></md-icon>
+      <!--  <md-icon><ng-md-icon icon="insert_drive_file"></ng-md-icon></md-icon>  -->
 
+        <img ng-src="{{recipe.image}}?{{$index}}" class="sizing2"  />
 
         <div class="md-list-item-text">
+            <br/>
             <h3><b>{{recipe.title}}</b></h3>
             <h5><i>Created on: {{recipe.published_date | date:'dd/MM/yyyy'}}</i></h5>
             <p style="color:black"><strong>{{recipe.description}}</strong></p>
+            <br/>
         </div>
 
             <div layout="row">

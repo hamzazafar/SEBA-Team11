@@ -1,6 +1,6 @@
 <form class="form-horizontal" name="groupForm">
   <fieldset>
-      <legend><h2><b>Add a New Group</b></h2></legend>
+      <legend>Add a New Group</legend>
 
 <!-- Name and Author -->
       <br/>
@@ -33,8 +33,8 @@
       <div class="form-group">
           <label for="inputDateandTime" class="col-lg-2 control-label">Date</label>
           <div class="col-lg-10">
-                  <md-datepicker id="inputDateandTime" md-placeholder="Choose the date" ng-model=$ctrl.var1></md-datepicker>
-                    <p>{{$ctrl.var1}}</p>
+                  <md-datepicker id="inputDateandTime" md-placeholder="Choose the date" ng-model=$ctrl.group.meeting_date></md-datepicker>
+
               </div>
       </div>
 
@@ -44,7 +44,7 @@
       <div class="form-group">
           <label class="col-lg-2 control-label" for="select1">Time</label>
           <div class="col-lg-10">
-              <select class="form-control" id="select1" ng-model="&ctrl.var2">
+              <select class="form-control" id="select1">
                   <option>12 AM</option>
                   <option>1 AM</option>
                   <option>2 AM</option>
@@ -72,9 +72,6 @@
               </select>
           </div>
       </div>
-
-      {{$ctrl.group.meeting_date}} = {{$ctrl.var1 + $ctrl.var2}}
-      <p>{{ctrl.group.meeting_date}}</p>
 
       <br/>
       <!-- Food preferences -->
