@@ -42,6 +42,19 @@ class ViewSearchComponentController {
         return obj;
     };
 
+    loadTagsFromIngredients() {
+      var ingredients_tags = [];
+      var i=0;
+      for(i; i< this.recipes.length ; i++){
+        var j=0;
+        for(j;j< this.recipes[i].ingredients.length; j++){
+          ingredients_tags.push(this.recipes[i].ingredients[j].name)
+        }
+
+      }
+      return JSON.stringify(ingredients_tags);
+
+    }
     loadImage(image) {
         return require('file-loader!../../assets/' + image);
     }

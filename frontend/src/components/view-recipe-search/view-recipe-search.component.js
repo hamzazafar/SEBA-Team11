@@ -36,19 +36,17 @@ class ViewRecipeSearchComponentController{
         return require('file-loader!../../assets/' + image);
     }
 
-    loadTagsFromIngredients() {
-      var ingredients_tags = [];
-      var i=0;
-      for(i; i< this.recipes.length ; i++){
-        var j=0;
-        for(j;j< this.recipes[i].ingredients.length; j++){
-          ingredients_tags.push(this.recipes[i].ingredients[j].name)
-        }
-
-      }
-      return JSON.stringify(ingredients_tags);
-
-    }
+    loadTags(query) {
+        var obj = [
+             { "text": "ketchup" },
+             { "text": "apple" },
+             { "text": "onion" },
+             { "text": "salt" },
+             { "text": "sugar" },
+             { "text": "tomato" },
+             { "text": "potato"}];
+        return obj;
+    };
 
     details (recipe) {
         let _id = recipe['_id'];
