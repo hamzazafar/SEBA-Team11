@@ -24,6 +24,9 @@ class ViewLoginComponentController{
     constructor($state,UserService){
         this.$state = $state;
         this.UserService = UserService;
+        this.usern = "";
+        this.que = "";
+        this.ans ="";
     }
 
     $onInit() {

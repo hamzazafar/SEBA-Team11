@@ -66,19 +66,20 @@
                 <br/>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></span>
-                <input type="answer" class="form-control" name="answer" ng-model="$ctrl.answ" id="answer"  placeholder="Enter the answer to your question"/>
+                <input type="answer" class="form-control" name="answer" ng-model="$ctrl.ans" id="answer"  placeholder="Enter the answer to your question"/>
                 </div>
                     <!--    <button type="button" class="btn btn-default" ng-click="$ctrl.checkQuestion()">Check</button -->
-
-                <input ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="newpassword" class="form-control" name="newpassword" ng-model="$ctrl.UserService.getCurrentUser().password" id="newpassword"  placeholder="Enter your new password"/>
-                <input ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="newpassword2" class="form-control" name="newpassword2" ng-model="$ctrl.UserService.getCurrentUser().password2" id="newpassword2"  placeholder="Confirm your new password"/>
-
+                <br/>
+                <input ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == true" type="newpassword" class="form-control" name="newpassword" ng-model="$ctrl.UserService.getCurrentUser().password" id="newpassword"  placeholder="Enter your new password"/>
+                <br/>
+                <input ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == true" type="newpassword2" class="form-control" name="newpassword2" ng-model="$ctrl.UserService.getCurrentUser().password2" id="newpassword2"  placeholder="Confirm your new password"/>
+             <br/>
 
             </div>
             <div class="modal-footer">
-                <button ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
-                <button ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == true" type="button" class="btn btn-danger btn-ok" ng-click="$ctrl.updatePassword()">Submit</button>
-                <button ng-if="($ctrl.UserService.getCurrentUser().question == $ctrl.que && $ctrl.UserService.getCurrentUser().answer == $ctrl.ans) == false" type="button" class="btn btn-default button2" data-dismiss="modal">Wrong input</button>
+                <button ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == true" type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+                <button ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == true" type="button" class="btn btn-danger btn-ok" ng-click="$ctrl.updatePassword()">Submit</button>
+                <button ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == false" type="button" class="btn btn-default button2" data-dismiss="modal">Wrong input</button>
 
             </div>
         </div>

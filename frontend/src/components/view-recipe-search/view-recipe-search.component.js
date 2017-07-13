@@ -36,17 +36,6 @@ class ViewRecipeSearchComponentController{
         return require('file-loader!../../assets/' + image);
     }
 
-    loadTags(query) {
-        var obj = [
-             { "text": "ketchup" },
-             { "text": "apple" },
-             { "text": "onion" },
-             { "text": "salt" },
-             { "text": "sugar" },
-             { "text": "tomato" },
-             { "text": "potato"}];
-        return obj;
-    };
 
     details (recipe) {
         let _id = recipe['_id'];
