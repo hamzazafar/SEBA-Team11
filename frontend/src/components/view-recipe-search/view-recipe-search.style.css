@@ -1,5 +1,9 @@
+.long-button {
+  width: 200px;
+}
+
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 50px;
     padding-bottom: 50px;
     height: 100%;
 }
@@ -46,6 +50,11 @@ tags-input .tags .tag-item {
 tags-input .tags .tag-item .remove-button {
     color: white;
 }
+
+.featurette-divider-new {
+    margin: 5px;
+}
+
 
 /* Featurettes
 ------------------------- */

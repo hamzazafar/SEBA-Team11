@@ -19,8 +19,10 @@ class ViewRecipeSearchComponent {
 }
 
 class ViewRecipeSearchComponentController{
-    constructor($state, RecipesService){
-        this.$state = $state;
+    constructor($state, RecipesService, $anchorScroll, $timeout){
+        this.$state = $state
+        this.$anchorScroll = $anchorScroll;
+        this.$timeout = $timeout;
         this.RecipesService = RecipesService;
         this.tags = [];
         this.recipes = [];
@@ -29,7 +31,7 @@ class ViewRecipeSearchComponentController{
 
 
     static get $inject(){
-        return ['$state', RecipeService.name];
+        return ['$state', RecipeService.name, '$anchorScroll', '$timeout'];
     }
 
     loadImage(image) {
@@ -53,7 +55,11 @@ class ViewRecipeSearchComponentController{
         });
 
         this.ingredients = [];
+        //scroll to results
+        this.$anchorScroll('search-results');
+
     }
+
 
 }
 export default ViewRecipeSearchComponent;

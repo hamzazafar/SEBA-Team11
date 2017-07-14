@@ -2,7 +2,6 @@
 <div class="intro-header" style="background: url({{$ctrl.loadImage('organic.png')}}) no-repeat center center; background-size: cover;">
     <div class="container-fluid">
 
-        <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message featurette-heading">
                     <h1 class="text-center" >What's in Your Fridge?</h1>
@@ -10,22 +9,22 @@
                         <tags-input ng-model="$ctrl.tags" placeholder="Type here.." add-on-paste="true">
 
                         </tags-input>
-         <button  ng-click="$ctrl.getByIngredients()" type="submit" class="btn btn-primary">Search</button>
+         <button  ng-click="$ctrl.getByIngredients()" type="submit" class="btn btn-primary long-button">Search</button>
 
                     </div>
                 </div>
             </div>
 
-        </div>
         <!-- /.container -->
 
     </div>
     <!-- /.intro-header -->
 </div>
 
-<hr class="featurette-divider">
+<hr class="featurette-divider-new">
 
 <md-list>
+  <h2 id="search-results">Search Results <small> ({{$ctrl.recipes.length}} Results)</small></h2>
 <md-list-item aria-label="Recipe" ng-click="$ctrl.details(recipe)" class="md-3-line" ng-repeat="recipe in $ctrl.recipes">
 
 
@@ -43,6 +42,3 @@
 </md-list-item>
 <md-divider></md-divider>
 </md-list>
-
-
-
