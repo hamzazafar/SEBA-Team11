@@ -49,6 +49,10 @@ class AppHeaderComponentController{
         this.$state.go('recipes',{});
     }
 
+    catalogue(){
+        this.$state.go('catalogue',{});
+    }
+
     goHome(){
         this.$state.go('/',{});
     }

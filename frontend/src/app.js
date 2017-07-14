@@ -25,6 +25,7 @@ import ViewRecipe from './components/view-recipe/view-recipe';
 import ViewRecipeEdit from './components/view-recipe-edit/view-recipe-edit';
 import ViewRecipeCreate from './components/view-recipe-create/view-recipe-create';
 import ViewRecipeSearch from  './components/view-recipe-search/view-recipe-search';
+import ViewCatalogue from './components/view-catalogue/view-catalogue';
 
 
 import ViewGroups from './components/view-groups/view-groups';
@@ -48,7 +49,7 @@ let app = angular.module('app', [
     ViewRecipeEdit.name,
     ViewRecipeCreate.name,
     ViewRecipeSearch.name,
-
+    ViewCatalogue.name,
 
     ViewGroups.name,
     ViewGroup.name,

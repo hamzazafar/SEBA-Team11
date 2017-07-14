@@ -37,14 +37,7 @@ class ViewRecipesComponentController {
         this.$state.go('recipe',{ recipeId:_id});
     };
 
-    edit (recipe) {
-        if (this.UserService.isAuthenticated()) {
-            let _id = recipe['_id'];
-            this.$state.go('recipeEdit',{ recipeId:_id});
-        } else {
-            this.$state.go('login',{});
-        }
-    };
+
 
     newRecipe(){
 
@@ -56,19 +49,7 @@ class ViewRecipesComponentController {
 
     }
 
-    delete(recipe) {
-        if (this.UserService.isAuthenticated()) {
-            let _id = recipe['_id'];
-
-            this.RecipesService.delete(_id).then(response => {
-                let index = this.recipes.map(x => x['_id']).indexOf(_id);
-            this.recipes.splice(index, 1);
-        })
-
-        } else {
-            this.$state.go('login',{});
-        }
-    };
+  
 
     static get $inject(){
         return ['$state', RecipesService.name, UserService.name];
