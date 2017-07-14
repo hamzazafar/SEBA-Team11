@@ -27,6 +27,11 @@ class ViewGroupsComponentController {
 
     }
 
+    $init() {
+        this.googleMapsUrl = 'https://maps.google.com/maps/api/js';
+        this.pauseLoading = true;
+    }
+
     details (group) {
         let _id = group['_id'];
         this.$state.go('group',{ groupId:_id});
@@ -65,7 +70,6 @@ class ViewGroupsComponentController {
     };
 
     getLocation(group) {
-
       return group.location.street + " "+group.location.number+", "+group.location.postal_code+" "+group.location.city+", "+group.location.country;
     }
 
