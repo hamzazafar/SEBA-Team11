@@ -23,8 +23,8 @@
 
 <hr class="featurette-divider-new">
 
-<md-list>
-  <h2 id="search-results">Search Results <small> ({{$ctrl.recipes.length}} Results)</small></h2>
+<md-list id="search-results">
+  <h2>Search Results <small> ({{$ctrl.recipes.length}} Results)</small></h2>
 <md-list-item aria-label="Recipe" ng-click="$ctrl.details(recipe)" class="md-3-line" ng-repeat="recipe in $ctrl.recipes">
 
 
@@ -42,3 +42,5 @@
 </md-list-item>
 <md-divider></md-divider>
 </md-list>
+
+<hr class="featurette-divider-new">
