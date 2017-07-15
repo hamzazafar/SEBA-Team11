@@ -28,3 +28,7 @@ md-card.map-card {
 md-card-content.map-content {
     width: 550px;
 }
+
+p.group-info {
+    white-space: pre;
+}

@@ -5,18 +5,19 @@
       </md-card>
     </div>
 
-    <div class= "col-md-7" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{$ctrl.googleMapsUrl}}">
+    <div class= "col-md-7" map-lazy-load="https://maps.google.com/maps/api/js">
         <md-content class="view-map" layout="row">
             <md-card class="map-card">
                 <md-card-content class="map-content">
-                    <ng-map id="map" default-style="true" center="Germany" zoom-to-include-markers="true">
+                    <ng-map id="map" default-style="true" zoom-to-include-markers="true">
 
-                        <marker id='{{group.title}}' ng-repeat="group in $ctrl.groups" position="{{$ctrl.getMapLocation(group)}}" on-click="$ctrl.showGroup(group)"/>
+                        <marker ng-repeat="group in $ctrl.groups" position="{{$ctrl.getMapLocation(group)}}" on-click="$ctrl.showGroup({{group}})"/>
 
                         <info-window id="bar">
                             <div ng-non-bindable="">
-                                <p>{{$ctrl.getDetails()}}</p>
+                                <p class="group-info">{{$ctrl.showCoordinate()}}</p>
                             </div>
+
                         </info-window>
                     </ng-map>
                 </md-card-content>

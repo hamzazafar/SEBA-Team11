@@ -20,14 +20,18 @@ class ViewGroupsComponent {
 }
 
 class ViewGroupsComponentController {
-    constructor($state,GroupsService,UserService,NgMap){
+    constructor($state,GroupsService,UserService,NgMap,GeoCoder){
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
         this.group = {};
         NgMap.getMap({id : 'map'}).then(map => {
             this.map = map;
+            GeoCoder.geocode({address: 'Avenida Calle 26 # 40-40, Bogotá'}).then(
+                result => {
+                    this.coordinates = result[0].geometry.location;
         });
+    });
     }
 
     details (group) {
@@ -45,7 +49,6 @@ class ViewGroupsComponentController {
     };
 
     newGroup(){
-
         if (this.UserService.isAuthenticated()) {
             this.$state.go('groupAdd',{});
         } else {
@@ -68,20 +71,32 @@ class ViewGroupsComponentController {
     };
 
     showGroup(e, group) {
-        this.group = group;
+        self.group = group;
         this.map.showInfoWindow('bar', this);
     }
+    showCoordinate() {
+        return this.coordinates;
+    }
 
-    getDetails() {
-        return "hi" + this.group.title;
+    getMarkerInfo() {
+        return self.group.title + "(" + self.group.members_list.count + ")"
+            + "\n" + self.group.location.street
+            + " " + self.group.location.number
+            + "\n" + self.group.location.postal_code
+            + " " + self.group.location.city;
     }
 
     getMapLocation(group) {
-      return group.location.street + " " + group.location.number+", "+group.location.postal_code+" "+group.location.city+", "+group.location.country;
+
+        return group.location.street + " "
+                + group.location.number +", "
+                + group.location.postal_code +" "
+                + group.location.city +", "
+                + group.location.country;
     }
 
     static get $inject(){
-        return ['$state', GroupsService.name, UserService.name, 'NgMap'];
+        return ['$state', GroupsService.name, UserService.name, 'NgMap', 'GeoCoder'];
     }
 }
 
