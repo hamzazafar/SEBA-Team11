@@ -104,7 +104,6 @@ class ViewRecipeComponentController{
 
     getRating() {
       var countReviews = this.model.reviews.length;
-      console.log(countReviews)
 
       var sumReviews = 0;
       var i = 0;
@@ -112,13 +111,12 @@ class ViewRecipeComponentController{
         sumReviews += +this.model.reviews[i].stars;
         console.log(this.model.reviews[i].stars)
       }
-      console.log(sumReviews)
       if (countReviews == 0) {
-        return 5;
-      } else {
+        countReviews=1;
+      }
 
        return Math.round((sumReviews/countReviews)*10)/10;
-     }
+
    };
 
    getRoundedRating(){

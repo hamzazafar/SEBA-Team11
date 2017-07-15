@@ -49,6 +49,10 @@ class AppHeaderComponentController{
         this.$state.go('recipes',{});
     }
 
+    catalogue(){
+        this.$state.go('catalogue',{});
+    }
+
     goHome(){
         this.$state.go('/',{});
     }
@@ -59,7 +63,7 @@ class AppHeaderComponentController{
 
     logout(){
         this.UserService.logout();
-        this.$state.go('/',{});
+        this.$state.go('recipeSearch',{});
     }
 
     register(){

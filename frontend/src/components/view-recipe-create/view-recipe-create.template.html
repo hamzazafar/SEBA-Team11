@@ -11,6 +11,19 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Image</label>
+      <div class="col-lg-8">
+
+      <input type="file" ngf-select ng-model="picFile" name="file"
+             accept="image/*" ngf-max-size="20MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+
+      </div>
+
+    </div>
+
       <div class="form-group">
           <label for="inputDescription" class="col-lg-2 control-label">Description</label>
           <div class="col-lg-10">
@@ -20,12 +33,8 @@
     <div class="form-group">
       <label for="inputAuthor" class="col-lg-2 control-label">Author</label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="inputAuthor" placeholder="Author">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Share my recipe with others
-          </label>
-        </div>
+        <input type="text" class="form-control" id="inputAuthor" placeholder="$ctrl.recipe.author" ng-model="$ctrl.recipe.author" required="">
+        
       </div>
     </div>
 
@@ -92,7 +101,7 @@
 
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-          <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save()" type="submit" class="btn btn-primary">Submit</button>
+          <button ng-disabled="!recipeForm.$valid" ng-click="$ctrl.save(picFile)" type="submit" class="btn btn-primary">Submit</button>
         <button ng-click="$ctrl.cancel()" type="reset" class="btn btn-default">Cancel</button>
       </div>
     </div>

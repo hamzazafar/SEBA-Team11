@@ -19,8 +19,9 @@ class ViewRecipeSearchComponent {
 }
 
 class ViewRecipeSearchComponentController{
-    constructor($state, RecipesService){
-        this.$state = $state;
+    constructor($state, RecipesService, $anchorScroll){
+        this.$state = $state
+        this.$anchorScroll = $anchorScroll;
         this.RecipesService = RecipesService;
         this.tags = [];
         this.recipes = [];
@@ -29,24 +30,13 @@ class ViewRecipeSearchComponentController{
 
 
     static get $inject(){
-        return ['$state', RecipeService.name];
+        return ['$state', RecipeService.name, '$anchorScroll'];
     }
 
     loadImage(image) {
         return require('file-loader!../../assets/' + image);
     }
 
-    loadTags(query) {
-        var obj = [
-             { "text": "ketchup" },
-             { "text": "apple" },
-             { "text": "onion" },
-             { "text": "salt" },
-             { "text": "sugar" },
-             { "text": "tomato" },
-             { "text": "potato"}];
-        return obj;
-    };
 
     details (recipe) {
         let _id = recipe['_id'];
@@ -54,8 +44,8 @@ class ViewRecipeSearchComponentController{
     };
 
     getByIngredients(){
-        
-        for(var i=0; i< this.tags.length; i++){  
+
+        for(var i=0; i< this.tags.length; i++){
             this.ingredients.push(this.tags[i].text);
         }
 
@@ -64,7 +54,11 @@ class ViewRecipeSearchComponentController{
         });
 
         this.ingredients = [];
+        //scroll to results
+        this.$anchorScroll('search-results');
+
     }
+
 
 }
 export default ViewRecipeSearchComponent;
