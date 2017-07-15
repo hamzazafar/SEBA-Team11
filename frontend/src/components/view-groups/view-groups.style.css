@@ -20,3 +20,11 @@ md-list-item, md-list-item .md-list-item-inner {
     display: flex;
     justify-content: flex-start;
 }
+
+md-card.map-card {
+    width: 550px;
+}
+
+md-card-content.map-content {
+    width: 550px;
+}

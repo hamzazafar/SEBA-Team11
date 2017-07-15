@@ -20,11 +20,14 @@ class ViewGroupsComponent {
 }
 
 class ViewGroupsComponentController {
-    constructor($state,GroupsService,UserService){
+    constructor($state,GroupsService,UserService,NgMap){
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
-
+        this.group = {};
+        NgMap.getMap({id : 'map'}).then(map => {
+            this.map = map;
+        });
     }
 
     details (group) {
@@ -64,15 +67,22 @@ class ViewGroupsComponentController {
         }
     };
 
-    getLocation(group) {
+    showGroup(e, group) {
+        this.group = group;
+        this.map.showInfoWindow('bar', this);
+    }
 
-      return group.location.street + " "+group.location.number+", "+group.location.postal_code+" "+group.location.city+", "+group.location.country;
+    getDetails() {
+        return "hi" + this.group.title;
+    }
+
+    getMapLocation(group) {
+      return group.location.street + " " + group.location.number+", "+group.location.postal_code+" "+group.location.city+", "+group.location.country;
     }
 
     static get $inject(){
-        return ['$state', GroupsService.name, UserService.name];
+        return ['$state', GroupsService.name, UserService.name, 'NgMap'];
     }
-
 }
 
 export default ViewGroupsComponent;
