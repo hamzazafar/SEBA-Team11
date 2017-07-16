@@ -74,6 +74,17 @@ class ViewRecipeSearchComponentController{
 
     }
 
+    refreshSearch(){
+
+        console.log("refreshSearch called")
+        for (var i = 0; i < this.recipes.length; i++) {
+            if (this.recipes[i].ingredients.length != this.tags.length) {
+               /* delete this.recipes[i]; */
+
+                    this.recipes.splice(i, 1);
+            }
+        }
+    }
 
 }
 export default ViewRecipeSearchComponent;
