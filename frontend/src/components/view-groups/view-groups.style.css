@@ -20,3 +20,20 @@ md-list-item, md-list-item .md-list-item-inner {
     display: flex;
     justify-content: flex-start;
 }
+
+md-card.map-card {
+    width: 550px;
+}
+
+md-card-content.map-content {
+    width: 550px;
+}
+
+p.group-info {
+    white-space: pre;
+}
+
+.glyphicon.glyphicon-calendar {
+    font-size: 60px;
+    color: #a6a6a6;
+}

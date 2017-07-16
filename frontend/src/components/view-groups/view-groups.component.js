@@ -20,16 +20,14 @@ class ViewGroupsComponent {
 }
 
 class ViewGroupsComponentController {
-    constructor($state,GroupsService,UserService){
+    constructor($state,GroupsService,UserService,NgMap){
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
-
-    }
-
-    $init() {
-        this.googleMapsUrl = 'https://maps.google.com/maps/api/js';
-        this.pauseLoading = true;
+        this.group = {};
+        NgMap.getMap({id : 'map'}).then(map => {
+            this.map = map;
+    });
     }
 
     details (group) {
@@ -47,13 +45,12 @@ class ViewGroupsComponentController {
     };
 
     newGroup(){
-
         if (this.UserService.isAuthenticated()) {
             this.$state.go('groupAdd',{});
         } else {
             this.$state.go('login',{});
         }
-    }
+    };
 
     delete(group) {
         if (this.UserService.isAuthenticated()) {
@@ -69,14 +66,30 @@ class ViewGroupsComponentController {
         }
     };
 
-    getLocation(group) {
-      return group.location.street + " "+group.location.number+", "+group.location.postal_code+" "+group.location.city+", "+group.location.country;
-    }
+    showGroup(e, group) {
+        self.group = group;
+        this.map.showInfoWindow('bar', this);
+    };
+
+    getMarkerInfo() {
+        return self.group.title
+            + "\n" + self.group.location.street
+            + " " + self.group.location.number
+            + "\n" + self.group.location.postal_code
+            + " " + self.group.location.city;
+    };
+
+    getMapLocation(group) {
+        return group.location.street + " "
+                + group.location.number +", "
+                + group.location.postal_code +" "
+                + group.location.city +", "
+                + group.location.country;
+    };
 
     static get $inject(){
-        return ['$state', GroupsService.name, UserService.name];
+        return ['$state', GroupsService.name, UserService.name, 'NgMap'];
     }
-
 }
 
 export default ViewGroupsComponent;

@@ -1,33 +1,48 @@
 <div class="row">
-<div class="col-md-5">
-  <div ng-repeat="group in $ctrl.groups">
-    {{$ctrl.getLocation(group)}}   " />
-  </div>
-</div>
+    <div class="col-md-5">
+      <md-card class="filter-card">
 
-<div class= "col-md-7" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{$ctrl.googleMapsUrl}}">
-    <md-content class="view-map" layout="row">
-        <md-card style="width: 550px;">
-            <md-card-content style="width: 550px;">
-                <ng-map default-style="true" center="Germany" zoom="5">
-                    <div ng-repeat="group in $ctrl.groups">
-                         <marker position="{{$ctrl.getLocation(group)}}" />
-                    </div>
-                </ng-map>
-            </md-card-content>
-        </md-card>
-    </md-content>
+      </md-card>
+    </div>
+
+    <div class= "col-md-7" map-lazy-load="https://maps.google.com/maps/api/js">
+        <md-content class="view-map" layout="row">
+            <md-card class="map-card">
+                <md-card-content class="map-content">
+                    <ng-map id="map" default-style="true" zoom-to-include-markers="true">
+
+                        <marker ng-repeat="group in $ctrl.groups" position="{{$ctrl.getMapLocation(group)}}" on-click="$ctrl.showGroup(group)"/>
+
+                        <info-window id="bar">
+                            <div ng-non-bindable="">
+                                <p class="group-info">{{$ctrl.getMarkerInfo()}}</p>
+                            </div>
+                        </info-window>
+                    </ng-map>
+                </md-card-content>
+            </md-card>
+        </md-content>
+    </div>
 </div>
 
 <md-list class= "col-md-12">
 
     <md-list-item aria-label="Group" ng-click="$ctrl.details(group)" class="md-3-line" ng-repeat="group in $ctrl.groups">
-        <md-icon><ng-md-icon icon="insert_drive_file"></ng-md-icon></md-icon>
+        <div><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
 
         <div class="md-list-item-text">
+            <br/>
             <h3><b>{{group.title}}</b></h3>
             <h5><i>Created on: {{group.published_date | date:'dd/MM/yyyy'}}</i></h5>
             <p style="color:black"><strong>{{group.description}}</strong></p>
+            <br/>
+        </div>
+
+        <div class="md-list-item-text" layout="column" layout-align=" end end">
+            <p><b>Created by: {{group.author}}</b></p>
+            <p>Members: {{group.members_list.length}}</p>
+            <p>Open spots: {{group.max_members - group.members_list.length}}</p>
+            <p>Food restrictions: {{group.preferences}}</p>
         </div>
 
         <div layout="column" layout-align=" end end">
