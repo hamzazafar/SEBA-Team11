@@ -25,6 +25,7 @@ class ViewRecipeSearchComponentController{
         this.RecipesService = RecipesService;
         this.tags = [];
         this.recipes = [];
+        this.allRecipes = [];
         this.ingredients= [];
         this.check;
     }
@@ -51,22 +52,18 @@ class ViewRecipeSearchComponentController{
         }
 
         this.RecipesService.getByIngredient(this.ingredients).then(data => {
+            this.allRecipes = JSON.parse(JSON.stringify(data));
             if(!this.check){
-                this.recipes = JSON.parse(JSON.stringify(data));
+                this.recipes = Array.from(this.allRecipes);
             }
             else {
-                var tempList = [];
-                tempList = JSON.parse(JSON.stringify(data));
-                for (var i = 0; i < tempList.length; i++) {
-                    if (tempList[i].ingredients.length == this.tags.length) {
-                        this.recipes.push(tempList[i]);
+                for (var i = 0; i < this.allRecipes.length; i++) {
+                    if (this.allRecipes[i].ingredients.length == this.tags.length) {
+                        this.recipes.push(this.allRecipes[i]);
                     }
                 }
             }
         });
-
-
-
 
         this.ingredients = [];
         //scroll to results
@@ -76,15 +73,17 @@ class ViewRecipeSearchComponentController{
 
     refreshSearch(){
 
-        console.log("refreshSearch called")
-        for (var i = 0; i < this.recipes.length; i++) {
-            if (this.recipes[i].ingredients.length != this.tags.length) {
-               /* delete this.recipes[i]; */
-
-                    this.recipes.splice(i, 1);
+          if(this.check){
+            for (var i = 0; i < this.recipes.length; i++) {
+              if (this.recipes[i].ingredients.length != this.tags.length) {
+                      this.recipes.splice(i, 1);
+              }
             }
-        }
-    }
-
+          }
+          else{
+             this.recipes = [];
+             this.recipes = Array.from(this.allRecipes);
+          }
+   }
 }
 export default ViewRecipeSearchComponent;
