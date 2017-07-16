@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <button class="btn btn-primary navbar-btn" ng-click="$ctrl.recipeSearch()" >
+          <button class="btn btn-primary navbar-btn btn-outline" ng-click="$ctrl.recipeSearch()">
                   Search
           </button>
         </li>
@@ -49,19 +49,19 @@
          </ul>
         </li>
         <li>
-          <button class="btn btn-link navbar-btn " ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.logout($event)">
+          <button class="btn btn-primary navbar-btn " ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.logout($event)">
 
             Logout
           </button>
         </li>
         <li>
-          <button class="btn btn-link navbar-btn" ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login($event)">
+          <button class="btn btn-primary navbar-btn" ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.login($event)">
 
             Login
           </button>
         </li>
         <li>
-          <button class="btn btn-link navbar-btn" ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.register($event)">
+          <button class="btn btn-primary navbar-btn" ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.register($event)">
 
             Sign Up
           </button>
