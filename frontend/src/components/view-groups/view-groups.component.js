@@ -35,15 +35,6 @@ class ViewGroupsComponentController {
         this.$state.go('group',{ groupId:_id});
     };
 
-    edit (group) {
-        if (this.UserService.isAuthenticated()) {
-            let _id = group['_id'];
-            this.$state.go('groupEdit',{ groupId:_id});
-        } else {
-            this.$state.go('login',{});
-        }
-    };
-
     newGroup(){
         if (this.UserService.isAuthenticated()) {
             this.$state.go('groupAdd',{});
@@ -71,9 +62,12 @@ class ViewGroupsComponentController {
         this.map.showInfoWindow('bar', this);
     };
 
-    getMarkerInfo() {
-        return self.group.title
-            + "\n" + self.group.location.street
+    getMarkerGroupTitle() {
+        return self.group.title;
+    }
+
+    getMarkerLocationInfo() {
+        return self.group.location.street
             + " " + self.group.location.number
             + "\n" + self.group.location.postal_code
             + " " + self.group.location.city;
@@ -86,6 +80,11 @@ class ViewGroupsComponentController {
                 + group.location.city +", "
                 + group.location.country;
     };
+
+    getGroupId() {
+        let id = self.group['_id'];
+        return id;
+    }
 
     static get $inject(){
         return ['$state', GroupsService.name, UserService.name, 'NgMap'];

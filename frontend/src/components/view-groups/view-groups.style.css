@@ -35,9 +35,13 @@ p.group-info {
 
 .glyphicon.glyphicon-calendar {
     font-size: 60px;
-    color: #a6a6a6;
+    color: #18bc9c;
 }
 
 .form-group {
     vertical-align: middle;
+}
+
+.marker-title {
+    font-weight: bold;
 }

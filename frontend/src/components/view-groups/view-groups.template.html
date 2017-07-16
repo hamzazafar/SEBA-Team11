@@ -36,8 +36,10 @@
                         <marker ng-repeat="group in $ctrl.groups" position="{{$ctrl.getMapLocation(group)}}" on-click="$ctrl.showGroup(group)"/>
 
                         <info-window id="bar">
-                            <div ng-non-bindable="">
-                                <p class="group-info">{{$ctrl.getMarkerInfo()}}</p>
+                            <div class= "column" ng-non-bindable="">
+                                <p class="marker-title">{{$ctrl.getMarkerGroupTitle()}}</p>
+                                <p class="group-info">{{$ctrl.getMarkerLocationInfo()}}</p>
+                                <a ui-sref="group({groupId: '{{$ctrl.getGroupId()}}' })">See more details</a>
                             </div>
                         </info-window>
                     </ng-map>
