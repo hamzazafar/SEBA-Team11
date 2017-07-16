@@ -2,6 +2,7 @@
 
 import angular from 'angular';
 
+
 import ViewGroupCreateComponent from './view-group-create.component';
 
 

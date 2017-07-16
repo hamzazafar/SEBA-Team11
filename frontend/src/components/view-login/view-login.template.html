@@ -27,10 +27,10 @@
         </div>
 
 
-    <div class="form-group " >
+ <!--   <div class="form-group " >
       <!--  <div class ="col-lg-10 col-lg-offset-2"> -->
-            <button class="btn btn-primary btn-sm button2" data-toggle="modal" data-target="#securityCheck"><i>I forgot my password</i></button>
-        </div>
+  <!--          <button class="btn btn-primary btn-sm button2" data-toggle="modal" data-target="#securityCheck"><i>I forgot my password</i></button>
+        </div> -->
 
     <div class="form-group">
     <!--  <div class="col-lg-10 col-lg-offset-2"> -->
@@ -44,7 +44,7 @@
 </form>
 
 <!-- Dialog for security check -->
-<div class="modal fade" id="securityCheck" role="dialog" aria-hidden="true">
+<!--<div class="modal fade" id="securityCheck" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -69,7 +69,7 @@
                 <input type="answer" class="form-control" name="answer" ng-model="$ctrl.ans" id="answer"  placeholder="Enter the answer to your question"/>
                 </div>
                     <!--    <button type="button" class="btn btn-default" ng-click="$ctrl.checkQuestion()">Check</button -->
-                <br/>
+        <!--        <br/>
                 <input ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == true" type="newpassword" class="form-control" name="newpassword" ng-model="$ctrl.UserService.getCurrentUser().password" id="newpassword"  placeholder="Enter your new password"/>
                 <br/>
                 <input ng-if="($ctrl.UserService.getUserBy($ctrl.usern).question == $ctrl.que && $ctrl.UserService.getUserBy($ctrl.usern).answer == $ctrl.ans) == true" type="newpassword2" class="form-control" name="newpassword2" ng-model="$ctrl.UserService.getCurrentUser().password2" id="newpassword2"  placeholder="Confirm your new password"/>

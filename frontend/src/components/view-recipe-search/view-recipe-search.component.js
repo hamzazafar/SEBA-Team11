@@ -26,6 +26,7 @@ class ViewRecipeSearchComponentController{
         this.tags = [];
         this.recipes = [];
         this.ingredients= [];
+        this.check;
     }
 
 
@@ -50,8 +51,22 @@ class ViewRecipeSearchComponentController{
         }
 
         this.RecipesService.getByIngredient(this.ingredients).then(data => {
-            this.recipes = JSON.parse(JSON.stringify(data));
+            if(!this.check){
+                this.recipes = JSON.parse(JSON.stringify(data));
+            }
+            else {
+                var tempList = [];
+                tempList = JSON.parse(JSON.stringify(data));
+                for (var i = 0; i < tempList.length; i++) {
+                    if (tempList[i].ingredients.length == this.tags.length) {
+                        this.recipes.push(tempList[i]);
+                    }
+                }
+            }
         });
+
+
+
 
         this.ingredients = [];
         //scroll to results

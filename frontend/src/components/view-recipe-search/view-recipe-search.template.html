@@ -6,10 +6,15 @@
                 <div class="intro-message featurette-heading">
                     <h1 class="text-center" >What's in Your Fridge?</h1>
                     <div class="text-center">
+
+                        <h3 style="color: white"><b><input type="checkbox" size="" ng-model="$ctrl.check"> Check me if you want to search just by the ingredients you type in</b> </h3>
+
                         <tags-input ng-model="$ctrl.tags" placeholder="Type here.." add-on-paste="true">
 
                         </tags-input>
-         <button  ng-click="$ctrl.getByIngredients()" type="submit" class="btn btn-primary long-button">Search</button>
+
+
+                        <button ng-click="$ctrl.getByIngredients()" type="submit" class="btn btn-primary long-button">Search</button>
 
                     </div>
                 </div>
@@ -25,12 +30,13 @@
 
 <md-list id="search-results">
   <h2>Search Results <small> ({{$ctrl.recipes.length}} Results)</small></h2>
-<md-list-item aria-label="Recipe" ng-click="$ctrl.details(recipe)" class="md-3-line" ng-repeat="recipe in $ctrl.recipes">
+
+<md-list-item aria-label="Recipe" ng-click="$ctrl.details(recipe)" class="md-3-line" ng-repeat="recipe in $ctrl.recipes" >
 
 
     <img ng-src="{{recipe.image}}?{{$index}}" class="sizing2"  />
 
-    <div class="md-list-item-text">
+    <div class="md-list-item-text" >
         <br/>
         <h3><b>{{recipe.title}}</b></h3>
         <h5><i>Created on: {{recipe.published_date | date:'dd/MM/yyyy'}}</i></h5>
