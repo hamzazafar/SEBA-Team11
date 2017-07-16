@@ -20,17 +20,13 @@ class ViewGroupsComponent {
 }
 
 class ViewGroupsComponentController {
-    constructor($state,GroupsService,UserService,NgMap,GeoCoder){
+    constructor($state,GroupsService,UserService,NgMap){
         this.$state = $state;
         this.GroupsService = GroupsService;
         this.UserService = UserService;
         this.group = {};
         NgMap.getMap({id : 'map'}).then(map => {
             this.map = map;
-            GeoCoder.geocode({address: 'Avenida Calle 26 # 40-40, Bogotá'}).then(
-                result => {
-                    this.coordinates = result[0].geometry.location;
-        });
     });
     }
 
@@ -54,7 +50,7 @@ class ViewGroupsComponentController {
         } else {
             this.$state.go('login',{});
         }
-    }
+    };
 
     delete(group) {
         if (this.UserService.isAuthenticated()) {
@@ -73,30 +69,26 @@ class ViewGroupsComponentController {
     showGroup(e, group) {
         self.group = group;
         this.map.showInfoWindow('bar', this);
-    }
-    showCoordinate() {
-        return this.coordinates;
-    }
+    };
 
     getMarkerInfo() {
-        return self.group.title + "(" + self.group.members_list.count + ")"
+        return self.group.title
             + "\n" + self.group.location.street
             + " " + self.group.location.number
             + "\n" + self.group.location.postal_code
             + " " + self.group.location.city;
-    }
+    };
 
     getMapLocation(group) {
-
         return group.location.street + " "
                 + group.location.number +", "
                 + group.location.postal_code +" "
                 + group.location.city +", "
                 + group.location.country;
-    }
+    };
 
     static get $inject(){
-        return ['$state', GroupsService.name, UserService.name, 'NgMap', 'GeoCoder'];
+        return ['$state', GroupsService.name, UserService.name, 'NgMap'];
     }
 }
 

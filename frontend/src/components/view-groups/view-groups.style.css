@@ -32,3 +32,8 @@ md-card-content.map-content {
 p.group-info {
     white-space: pre;
 }
+
+.glyphicon.glyphicon-calendar {
+    font-size: 60px;
+    color: #a6a6a6;
+}

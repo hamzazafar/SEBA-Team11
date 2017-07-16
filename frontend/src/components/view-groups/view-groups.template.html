@@ -11,13 +11,12 @@
                 <md-card-content class="map-content">
                     <ng-map id="map" default-style="true" zoom-to-include-markers="true">
 
-                        <marker ng-repeat="group in $ctrl.groups" position="{{$ctrl.getMapLocation(group)}}" on-click="$ctrl.showGroup({{group}})"/>
+                        <marker ng-repeat="group in $ctrl.groups" position="{{$ctrl.getMapLocation(group)}}" on-click="$ctrl.showGroup(group)"/>
 
                         <info-window id="bar">
                             <div ng-non-bindable="">
-                                <p class="group-info">{{$ctrl.showCoordinate()}}</p>
+                                <p class="group-info">{{$ctrl.getMarkerInfo()}}</p>
                             </div>
-
                         </info-window>
                     </ng-map>
                 </md-card-content>
@@ -29,12 +28,21 @@
 <md-list class= "col-md-12">
 
     <md-list-item aria-label="Group" ng-click="$ctrl.details(group)" class="md-3-line" ng-repeat="group in $ctrl.groups">
-        <md-icon><ng-md-icon icon="insert_drive_file"></ng-md-icon></md-icon>
+        <div><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
 
         <div class="md-list-item-text">
+            <br/>
             <h3><b>{{group.title}}</b></h3>
             <h5><i>Created on: {{group.published_date | date:'dd/MM/yyyy'}}</i></h5>
             <p style="color:black"><strong>{{group.description}}</strong></p>
+            <br/>
+        </div>
+
+        <div class="md-list-item-text" layout="column" layout-align=" end end">
+            <p><b>Created by: {{group.author}}</b></p>
+            <p>Members: {{group.members_list.length}}</p>
+            <p>Open spots: {{group.max_members - group.members_list.length}}</p>
+            <p>Food restrictions: {{group.preferences}}</p>
         </div>
 
         <div layout="column" layout-align=" end end">
