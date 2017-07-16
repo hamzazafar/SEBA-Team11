@@ -100,6 +100,24 @@ var recipe3 = new Entry ({
 
 })
 
+var recipe4 = new Entry ({
+    recipe_id: "04",
+    title: 'Simple Omlette',
+    author: 'Hamza Zafar',
+    description: 'An easy, quick and very simple breakfast.',
+    published_date: new Date(),
+    directions: ["Heat a skillet over medium heat and spray with cooking spray.", "Whisk egg whites with salt and pepper in a bowl. Pour egg mixture into the heated skillet and swirl until eggs cover entire bottom of skillet; cook for 1 to 2 minutes." ],
+    ingredients: [{"name":"eggs","quantity":"3"}],
+    image: "http://localhost:3000/api/recipes/uploads/04.jpg",
+    reviews: [
+        {"author": "seba344",
+            "published_date": new Date(),
+            "stars": 4,
+            "comment": "Very simple but still delicious."},
+    ]
+
+})
+
 Entry.find({recipe_id: "01"}, function (err, recipes) {
     if(recipes.length > 0){
         console.log('Recipe already exists');
@@ -133,7 +151,16 @@ Entry.find({recipe_id: "03"}, function (err, recipes) {
     }
 });
 
-
+Entry.find({recipe_id: "04"}, function (err, recipes) {
+    if(recipes.length > 0){
+        console.log('Recipe already exists');
+    } else{
+        recipe4.save(function(err, Recipe){
+            if(err) return console.error("Error while saving data to MongoDB: " + err); // <- this gets executed when there's an error
+            console.error(Recipe); // <- this never gets logged, even if there's no error.
+        });
+    }
+});
 
 
 // Export the Mongoose model
