@@ -30,7 +30,6 @@ class ViewRecipeSearchComponentController{
         this.check;
     }
 
-
     static get $inject(){
         return ['$state', RecipeService.name, '$anchorScroll'];
     }
@@ -73,15 +72,15 @@ class ViewRecipeSearchComponentController{
 
     refreshSearch(){
 
+          this.recipes = [];
           if(this.check){
-            for (var i = 0; i < this.recipes.length; i++) {
-              if (this.recipes[i].ingredients.length != this.tags.length) {
-                      this.recipes.splice(i, 1);
+            for (var i = 0; i < this.allRecipes.length; i++) {
+              if (this.allRecipes[i].ingredients.length == this.tags.length) {
+                      this.recipes.push(this.allRecipes[i]);
               }
             }
           }
           else{
-             this.recipes = [];
              this.recipes = Array.from(this.allRecipes);
           }
    }

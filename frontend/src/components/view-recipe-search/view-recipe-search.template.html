@@ -6,13 +6,8 @@
                 <div class="intro-message featurette-heading">
                     <h1 class="text-center" >What's in Your Fridge?</h1>
                     <div class="text-center">
-
                         <h3 class="mess"><b><input type="checkbox" ng-click="$ctrl.refreshSearch()" ng-model="$ctrl.check" > Check me if you want to search just by the ingredients you type in</b> </h3>
-
-                        <tags-input ng-model="$ctrl.tags" placeholder="Type here.." add-on-paste="true">
-
-                        </tags-input>
-
+                        <tags-input ng-model="$ctrl.tags" placeholder="Type here.." add-on-paste="true"></tags-input>
 
                         <button ng-click="$ctrl.getByIngredients()" type="submit" class="btn btn-primary long-button">Search</button>
 
@@ -40,6 +35,7 @@
         <br/>
         <h3><b>{{recipe.title}}</b></h3>
         <h5><i>Created on: {{recipe.published_date | date:'dd/MM/yyyy'}}</i></h5>
+        
         <p style="color:black"><strong>{{recipe.description}}</strong></p>
         <br/>
     </div>
