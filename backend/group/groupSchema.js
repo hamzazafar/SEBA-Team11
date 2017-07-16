@@ -41,7 +41,7 @@ var group1 = new Entry ({
     author: "biljali",
     published_date: new Date(),
     members_list: ["Teo Lata", "Andreea Niculescu", "seba12", "john21"],
-    max_members: 10,
+    max_members: 5,
     location: {
         street: "Oslostraße",
         number: "2",
@@ -75,7 +75,7 @@ var group2 = new Entry ({
         city: "Munich",
         country: "Germany"},
     meeting_date: "2017-07-23T18:25:43.511Z",
-    meeting_time: "21PM",
+    meeting_time: "9PM",
     preferences: "vegan",
     description: "Vegan power! Let's meet and have a great cooking time together! :-)",
     comments: [{
@@ -101,7 +101,7 @@ var group3 = new Entry ({
         city: "Garching",
         country: "Germany"},
     meeting_date: "2017-08-10T18:25:43.511Z",
-    meeting_time: "20PM",
+    meeting_time: "8PM",
     preferences: "vegeterian",
     description: "Cooking time after hard seba time :-)",
     comments: []
